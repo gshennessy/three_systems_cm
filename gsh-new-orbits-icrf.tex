@@ -1,0 +1,529 @@
+%% Beginning of file 'sample701.tex'
+%%
+%% Version 7.0.1. Created May 2025.
+%% Version 7. Created January 2025.  
+%%
+%% AASTeX v7+ calls the following external packages:
+%% times, hyperref, ifthen, hyphens, longtable, xcolor, 
+%% bookmarks, array, rotating, ulem, and lineno 
+%%
+%% RevTeX is no longer used in AASTeX v7+.
+%%
+\documentclass[linenumbers,trackchanges]{aastex701}
+%%
+%% This initial command takes arguments that can be used to easily modify 
+%% the output of the compiled manuscript. Any combination of arguments can be 
+%% invoked like this:
+%%
+%% \documentclass[argument1,argument2,argument3,...]{aastex7}
+%%
+%% Six of the arguments are typestting options. They are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  default     : one text column, 10 point font, single spaced (default).
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default.
+%%   linenumbers  : turn on linenumbering. Note this is mandatory for AAS
+%%                  Journal submissions and revisions.
+%%   trackchanges : Shows added text in bold.
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations, acknowledgments,
+%%                  and author contributions for dual anonymous review.
+%%  resetfootnote : Reset footnotes to 1 in the body of the manuscript.
+%%                  Useful when there are a lot of authors and affiliations
+%%		    in the front matter.
+%%   longbib      : Print article titles in the references. This option
+%% 		    is mandatory for PSJ manuscripts.
+%%
+%% Since v6, AASTeX has included \hyperref support. While we have built in 
+%% specific %% defaults into the classfile you can manually override them 
+%% with the \hypersetup command. For example,
+%%
+%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% The "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% Running header information. A short title on odd pages and 
+%% short author list on even pages. Note that this
+%% information may be modified in production.
+%%\shorttitle{AASTeX v7.0.1 Sample article}
+%%\shortauthors{The Terra Mater collaboration}
+%%
+%% Include dates for submitted, revised, and accepted.
+%%\received{February 1, 2025}
+%%\revised{March 1, 2025}
+%%\accepted{\today}
+%%
+%% Indicate AAS Journal the manuscript was submitted to.
+%%\submitjournal{PSJ}
+%% Note that this command adds "Submitted to " the argument.
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+\watermark{draft}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Use this command to indicate a subdirectory where figures are located.
+%%\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\begin{document}
+
+\title{Astrometric parameters for three binary systems expressed in the ICRF}
+
+%% A significant change from AASTeX v6+ is in the author blocks. Now an email
+%% address is required for each author. This means that each author requires
+%% at least one of the following:
+%%
+%% \author
+%% \affiliation
+%% \email
+%%
+%% If these three commands are not available for each author, the latex
+%% compiler will issue an error and if you force the latex compiler to continue,
+%% it will generate an incomplete pdf.
+%%
+%% Multiple \affiliation commands are allowed and authors can also include
+%% an optional \altaffiliation to indicate a status, i.e. Hubble Fellow. 
+%% while affiliations are indexed as footnotes, altaffiliations are noted with
+%% with a non-numeric footnote that is set away from the numeric \affiliation 
+%% footnotes. NOTE that if an \altaffiliation command is used it must 
+%% come BEFORE the \affiliation call, right after the \author command, in 
+%% order to place the footnotes in the proper location. Because non-numeric
+%% symbols are used, \altaffiliation should be used sparingly.
+%%
+%% In v7+ the \author command takes an optional argument which provides 
+%% additional metadata about the author. Authors can provide the 16 digit 
+%% ORCID, the surname (family or last) name, the given (first or fore-) name, 
+%% and a name suffix, e.g. "Jr.". The syntax is:
+%%
+%% \author[orcid=0000-0002-9072-1121,gname=Gregory,sname=Schwarz]{Greg Schwarz}
+%%
+%% This name metadata in not shown, it is only for parsing by the peer review
+%% system so authors can be more easily identified. This name information will
+%% also be sent to the publisher so they can include it in the CROSSREF 
+%% metadata. Including an orcid will hyperlink the author name to the 
+%% author's ORCID page. Note that  during compilation, LaTeX will do some 
+%% limited checking of the format of the ID to make sure it is valid. If 
+%% the "orcid-ID.png" image file is  present or in the LaTeX pathway, the 
+%% ORCID icon will appear next to the authors name.
+%%
+%% Even though emails are now required for each author, the \email does not
+%% produce output in the compiled manuscript unless the optional "show" command
+%% is used. For example,
+%%
+%% \email[show]{greg.schwarz@aas.org}
+%%
+%% All "shown" emails are show in the bottom left of the first page. Due to
+%% space constraints, only a few emails should be shown. 
+%%
+%% To identify a corresponding author, use the \correspondingauthor command.
+%% The command appends "Corresponding Author: " to the argument it appears at
+%% the bottom left of the first page like the output from \email. 
+
+\author[orcid=0000-0001-8017-5115,gname=Gregory,sname=Hennessy]{Gregory S. Hennessy}
+\affiliation{US Naval Observatory}
+\email[show]{greg.hennessy@cox.net}  
+
+\author[orcid=0000-0002-2768-1606,gname=Julien, sname=Frouard]{Julien Frouard} 
+\affiliation{US Naval Observatory}
+\email[show]{julien.h.frouard.civ@us.navy.mil}
+
+\author[gname=Rachel,sname=Matson]{Rachel Matson}
+\affiliation{US Naval Observatory}
+\email[show]{rachel.a.matson2.civ@us.navy.mil}
+
+\author[gname=Brian,sname=Mason]{Brian Mason}
+\affiliation{US Naval Observatory}
+\email[show]{brian.d.mason.civ@us.navy.mil}
+
+\author[gname=George,sname=Kaplan]{George Kaplan}
+\affiliation{US Naval Observatory}
+\email[show]{gk@gkaplan.us}
+
+%% Use the \collaboration command to identify collaborations. This command
+%% takes an optional argument that is either a number or the word "all"
+%% which tells the compiler how many of the authors above the command to
+%% show. For example "\collaboration[all]{(DELVE Collaboration)}" wil include
+%% all the authors above this command.
+%%
+%% Mark off the abstract in the ``abstract'' environment. 
+\begin{abstract}
+
+  We present astrometric parameters describing the center-of-mass (CM) motions of three nearby binary systems: Sirius
+(HIP~32349), Procyon (HIP~37279), and $\mu$~Cassiopeiae (HIP~5336). When combined with well-determined orbital elements,
+these CM astrometric parameters enable accurate predictions of the motions of these systems in the International
+Celestial Reference Frame (ICRF). This approach yields substantially improved positional predictions compared to those
+obtained by propagating Hipparcos catalog positions alone, with direct relevance for high-precision celestial
+navigation. 
+\end{abstract}
+
+%% Keywords should appear after the \end{abstract} command. 
+%% The AAS Journals now uses Unified Astronomy Thesaurus (UAT) concepts:
+%% https://astrothesaurus.org
+%% You will be asked to selected these concepts during the submission process
+%% but this old "keyword" functionality is maintained in case authors want
+%% to include these concepts in their preprints.
+%%
+%% You can use the \uat command to link your UAT concepts back its source.
+\keywords{\uat{Binary Stars}{154} --- \uat{Stellar astronomy}{1583}  --- \uat{Proper Motions}{1295}}
+
+%% From the front matter, we move on to the body of the paper.
+%% Sections are demarcated by \section and \subsection, respectively.
+%% Observe the use of the LaTeX \label
+%% command after the \subsection to give a symbolic KEY to the
+%% subsection for cross-referencing in a \ref command.
+%% You can use LaTeX's \ref and \label commands to keep track of
+%% cross-references to sections, equations, tables, and figures.
+%% That way, if you change the order of any elements, LaTeX will
+%% automatically renumber them.
+
+\section{Introduction} \label{sec:intro}
+
+Accurate astrometric positions of bright stars are essential for navigation applications, both on the ground and in
+space. Although any enumeration of astrometric catalogs is necessarily incomplete, major catalogs produced over recent
+decades include the Fifth Fundamental Catalogue (FK5; \citealt{1988VeARI..32....1F}), Hipparcos
+\citep{1997A&A...323L..49P}, and the three Gaia data releases
+\citep{2016A&A...595A...2G,2018A&A...616A...1G,2023A&A...674A...1G}. 
+
+All astrometric catalogs are subject to systematic and statistical limitations. In particular, stellar multiplicity has
+long been recognized as a significant source of degraded catalog accuracy
+\citep{1975ARA&A..13..295V,1997A&A...323L..49P,1999A&A...341..121S,2001A&A...372..935P,2017ApJ...840L...1M}. An
+additional complication arises from the markedly different temporal sampling of the two principal space-based
+astrometric missions: Hipparcos observed for approximately three years, while Gaia DR3 spans roughly 33 months, with the
+two missions separated by nearly 24 years. This highly non-uniform time coverage complicates the direct combination of
+Hipparcos and Gaia astrometric data \citep{2019A&A...623A..72K}. 
+
+During a routine update of the USNO Guidance and Navigation Catalog (Version~1.2; \citealt{USNOGNC}), it became apparent
+that accurate propagated positions for several well-known bright stars---including Sirius, Procyon, $\alpha$~Centauri,
+and Polaris---could not be obtained using standard five-parameter astrometric solutions alone. These stars share two
+critical properties: extreme brightness, which results in incomplete representation of the primary components in Gaia
+DR3, and membership in binary or multiple systems. 
+
+Sirius is among the earliest stellar systems for which an orbital solution was determined
+\citep{10.1093/mnras/49.8.420a}, with a highly precise modern orbit derived from Hubble Space Telescope (HST)
+observations \citep{2017ApJ...840...70B}. Its white dwarf companion, Sirius~B, was discovered by Alvan Clark
+\citep{Clark1862} and is approximately 10 magnitudes fainter than the primary in the visible band. The system has a
+semimajor axis of $7.4957 \pm 0.0025\arcsec$ and an orbital period of $50.1284 \pm 0.0043$~yr
+\citep{2017ApJ...840...70B}. 
+
+The Procyon system \citep{Auwers1862} consists of a subgiant primary and a white dwarf companion differing in visual
+magnitude by approximately 10.5 \citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $4.3075 \pm 0.0016\arcsec$
+and a period of $40.840 \pm 0.022$~yr \citep{2015ApJ...813..106B}. 
+
+$\mu$~Cassiopeiae is a binary system composed of two main-sequence stars with visual magnitudes of 5.14 and 11.45
+\citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $0.9985 \pm 0.0013\arcsec$ and a period of $21.568 \pm
+0.015$~yr \citep{2020ApJ...904..112B}. For all three systems, propagating positions without accounting for orbital
+motion introduces positional errors comparable to the orbital semimajor axis. 
+
+\section{Data and Data Reduction} \label{sec:data_dr}
+
+All three systems analyzed in this study---Sirius, Procyon, and $\mu$~Cassiopeiae---have been observed with the Hubble
+Space Telescope, with the relevant astrometric analyses presented in three studies led by Bond
+\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. In each case, the analyses relied on measurements
+of relative position angles and separations between the binary components, rather than absolute right ascension and
+declination. Consequently, the results are insensitive to telescope pointing errors, provided that both components
+remain well within the detector field of view. 
+
+We retrieved archival imaging data from the Mikulski Archive for Space Telescopes (MAST), including observations beyond
+those obtained under proposal~12296. Inspection of the images revealed that the WFC3 observations provide substantially
+higher signal-to-noise ratios than those obtained with WFPC2. For a linear astrometric model fitted to uniformly sampled
+position measurements with constant single-epoch precision, the formal uncertainty of the proper motion scales as
+$T^{-3/2}$, where $T$ is the total observational time baseline
+\citep{Wielen1997,vanLeeuwen2007,Lindegren2021}. Accordingly, we restrict our analysis to only the WFC3 data when deriving
+astrometric parameters. 
+
+We processed each of the three stars independently. We inspected each data file to ensure
+that we could measure the position of the primary and secondary. In many, if not most cases, the secondary was of low
+enough flux that a fitted position could not be performed, in this case the pixel value of the peak flux was
+chosen, and the error was set to 1 pixel. With respect to the primary, when the peak was not saturated, a position was
+fitted. For these two situations, a two dimensional gaussian was fit using a Astropy Levenberg-Marquardt algorithm and
+least squares statistic, and the fitted error was used. When the primary was saturated, two points on each of the four
+diffraction spikes were chosen, and then the intersection x,y locations were calculated using Cramer's
+rule\citep{Cramer1750}. The x,y positions were converted into Ra, Dec pairs using the Astropy WCS routines, being
+careful to take into account the 1 based WCS routines and the 0 base used in python. We list the ICRF positions, along
+with the calculated errors in Table~\ref{tab:positions}. 
+
+Once the ICRF positions were calculated as a function of time, the center of mass of the three systems can be
+calculated at each observation date, along with the astrometric parameters for the center of mass of the system. The
+initial starting point for each calculation was the Hipparcos position of the primary star of each system, using the
+orbital parameters from Table~\ref{tab:orbits}. The separation and position angle was calculated at the Hipparcos epoch
+of 1991.25, and the masses of the two stars in order to get the ICRF position of the center of mass of the system. For
+each HST position in Table~\ref{tab:positions}, the effect of the finite parallax was removed from both the primary and
+secondary's position, the center of mass position calculated, and then the proper motions fit. The proper motion in RA
+was fit using $RA*\cos(Dec)$ as the current standard in astrometry\citep{1997A&A...323L..49P}. The value of the
+declination in the fit was the Declination of the system CM at epoch 1991.25. 
+
+
+\begin{deluxetable}{ccccccccc}
+\tablehead{\colhead{System Name} & \colhead{Dataset} & \colhead{Time} & \colhead{Pri RA} & \colhead{Pri Dec} &
+  \colhead{Sec RA} & \colhead{Sec Dec} & \colhead{$\sigma$ RA} & \colhead{$\sigma$ Dec}} 
+\tablecaption{ICRF positions and errors for three non--single systems \label{tab:positions}}
+\tabletypesize{\scriptsize}
+\tablewidth{0pt} 
+\startdata
+$\mu$ Cas & ib7j02010 & 2010-01-09 & 17.08474076 & 54.91585401 & 17.08529206 & 54.91611363 & 0.036 & 0.037 \\
+$\mu$ Cas & ib7j02020 & 2010-01-09 & 17.08474075 & 54.91585400 & 17.08529205 & 54.91611362 & 0.036 & 0.037 \\
+$\mu$ Cas & ib7j02030 & 2010-01-09 & 17.08474067 & 54.91585394 & 17.08529197 & 54.91611356 & 0.036 & 0.037 \\
+$\mu$ Cas & ib7j02040 & 2010-01-09 & 17.08474023 & 54.91585382 & 17.08529153 & 54.91611344 & 0.036 & 0.037 \\
+$\mu$ Cas & ibk702010 & 2010-12-03 & 17.08628543 & 54.91545152 & 17.08681730 & 54.91572010 & 0.006 & 0.007 \\
+$\mu$ Cas & ibk702020 & 2010-12-03 & 17.08628541 & 54.91545152 & 17.08681728 & 54.91572010 & 0.006 & 0.007 \\
+$\mu$ Cas & ibk702030 & 2010-12-03 & 17.08628531 & 54.91545153 & 17.08681718 & 54.91572011 & 0.006 & 0.007 \\
+$\mu$ Cas & ibk702040 & 2010-12-03 & 17.08628529 & 54.91545153 & 17.08681716 & 54.91572011 & 0.006 & 0.007 \\
+$\mu$ Cas & ibti02010 & 2011-12-05 & 17.08772929 & 54.91509275 & 17.08822680 & 54.91536490 & 0.025 & 0.025 \\
+$\mu$ Cas & ibti02020 & 2011-12-05 & 17.08772945 & 54.91509258 & 17.08822696 & 54.91536473 & 0.025 & 0.025 \\
+$\mu$ Cas & ibti02030 & 2011-12-05 & 17.08772964 & 54.91509266 & 17.08822715 & 54.91536481 & 0.025 & 0.025 \\
+$\mu$ Cas & ibti02040 & 2011-12-05 & 17.08772962 & 54.91509266 & 17.08822713 & 54.91536481 & 0.025 & 0.025 \\
+$\mu$ Cas & ic1k02010 & 2012-12-02 & 17.08948331 & 54.91464474 & 17.08993252 & 54.91491257 & 0.008 & 0.008 \\
+$\mu$ Cas & ic1k02020 & 2012-12-02 & 17.08948336 & 54.91464470 & 17.08993257 & 54.91491253 & 0.008 & 0.008 \\
+$\mu$ Cas & ic1k02030 & 2012-12-02 & 17.08975353 & 54.91452513 & 17.09020274 & 54.91479296 & 0.008 & 0.008 \\
+$\mu$ Cas & ic1k02040 & 2012-12-02 & 17.08948346 & 54.91464469 & 17.08993267 & 54.91491252 & 0.008 & 0.008 \\
+$\mu$ Cas & ica102010 & 2013-10-25 & 17.09112169 & 54.91411555 & 17.09151404 & 54.91437157 & 0.053 & 0.053 \\
+$\mu$ Cas & ica102020 & 2013-10-25 & 17.09112169 & 54.91411555 & 17.09151404 & 54.91437157 & 0.053 & 0.053 \\
+$\mu$ Cas & ica102030 & 2013-10-25 & 17.09112187 & 54.91411545 & 17.09151422 & 54.91437147 & 0.053 & 0.053 \\
+$\mu$ Cas & ica102040 & 2013-10-25 & 17.09112187 & 54.91411545 & 17.09151422 & 54.91437147 & 0.053 & 0.053 \\
+$\mu$ Cas & icjx02010 & 2015-01-06 & 17.09318699 & 54.91371843 & 17.09348098 & 54.91394378 & 0.023 & 0.023 \\
+$\mu$ Cas & icjx02020 & 2015-01-06 & 17.09305488 & 54.91364079 & 17.09334887 & 54.91386614 & 0.023 & 0.023 \\
+$\mu$ Cas & icjx02030 & 2015-01-06 & 17.09318698 & 54.91371839 & 17.09348097 & 54.91394374 & 0.023 & 0.023 \\
+$\mu$ Cas & icjx02040 & 2015-01-06 & 17.09318698 & 54.91371839 & 17.09348097 & 54.91394374 & 0.023 & 0.023 \\
+$\mu$ Cas & icvd02010 & 2016-07-11 & 17.09566986 & 54.91290773 & 17.09579716 & 54.91306039 & 0.036 & 0.036 \\
+$\mu$ Cas & icvd02020 & 2016-07-11 & 17.09566792 & 54.91290556 & 17.09579522 & 54.91305822 & 0.036 & 0.036 \\
+$\mu$ Cas & icvd02030 & 2016-07-11 & 17.09566792 & 54.91290661 & 17.09579522 & 54.91305927 & 0.036 & 0.036 \\
+$\mu$ Cas & icvd02040 & 2016-07-11 & 17.09566791 & 54.91290640 & 17.09579521 & 54.91305906 & 0.036 & 0.036 \\
+$\mu$ Cas & icvd02050 & 2016-07-11 & 17.09567078 & 54.91290497 & 17.09579808 & 54.91305763 & 0.036 & 0.036 \\
+$\mu$ Cas & icvd02060 & 2016-07-11 & 17.09566817 & 54.91290360 & 17.09579547 & 54.91305626 & 0.036 & 0.036 \\
+Sirius & ibk703010 & 2010-09-02 & 101.28474474 & -16.71961117 & 101.28737234 & -16.71957535 & 0.020 & 0.020 \\
+Sirius & ibk703020 & 2010-09-02 & 101.28474503 & -16.71961085 & 101.28737234 & -16.71957531 & 0.020 & 0.020 \\
+Sirius & ibk703030 & 2010-09-02 & 101.28474534 & -16.71961014 & 101.28737194 & -16.71957361 & 0.020 & 0.020 \\
+Sirius & ibk703040 & 2010-09-02 & 101.28474540 & -16.71961020 & 101.28737216 & -16.71957374 & 0.020 & 0.020 \\
+Sirius & ibti03010 & 2011-10-01 & 101.28455076 & -16.72005425 & 101.28729072 & -16.71987776 & 0.019 & 0.019 \\
+Sirius & ibti03020 & 2011-10-01 & 101.28455091 & -16.72005394 & 101.28729065 & -16.71987732 & 0.019 & 0.019 \\
+Sirius & ibti03030 & 2011-10-01 & 101.28454961 & -16.72005414 & 101.28729036 & -16.71987771 & 0.019 & 0.019 \\
+Sirius & ibti03040 & 2011-10-01 & 101.28454908 & -16.72005462 & 101.28729048 & -16.71987780 & 0.019 & 0.019 \\
+Sirius & ic1k03010 & 2012-09-26 & 101.28436754 & -16.72042249 & 101.28717661 & -16.72011666 & 0.029 & 0.028 \\
+Sirius & ic1k03020 & 2012-09-26 & 101.28436799 & -16.72042175 & 101.28717651 & -16.72011655 & 0.029 & 0.028 \\
+Sirius & ic1k03030 & 2012-09-26 & 101.28436664 & -16.72042145 & 101.28717603 & -16.72011632 & 0.029 & 0.028 \\
+Sirius & ic1k03040 & 2012-09-26 & 101.28436645 & -16.72042121 & 101.28717609 & -16.72011586 & 0.029 & 0.028 \\
+Sirius & ica103010 & 2014-03-31 & 101.28387978 & -16.72101333 & 101.28677062 & -16.72052229 & 0.016 & 0.016 \\
+Sirius & ica103020 & 2014-03-31 & 101.28387972 & -16.72101302 & 101.28677057 & -16.72052236 & 0.016 & 0.016 \\
+Sirius & ica103030 & 2014-03-31 & 101.28387918 & -16.72101404 & 101.28677045 & -16.72052262 & 0.016 & 0.016 \\
+Sirius & ica103040 & 2014-03-31 & 101.28387896 & -16.72101410 & 101.28677075 & -16.72052314 & 0.016 & 0.016 \\
+Sirius & icvd03010 & 2016-08-20 & 101.28366750 & -16.72186767 & 101.28666418 & -16.72108281 & 0.013 & 0.013 \\
+Sirius & icvd03020 & 2016-08-20 & 101.28366781 & -16.72186745 & 101.28666409 & -16.72108238 & 0.013 & 0.013 \\
+Sirius & icvd03030 & 2016-08-20 & 101.28366800 & -16.72186614 & 101.28666417 & -16.72108100 & 0.013 & 0.013 \\
+Sirius & icvd03040 & 2016-08-20 & 101.28366782 & -16.72186719 & 101.28666438 & -16.72108175 & 0.013 & 0.013 \\
+Procyon & ibk701010 & 2011-02-07 & 114.82353177 & 5.22211914 & 114.82289759 & 5.22175284 & 0.015 & 0.014 \\
+Procyon & ibk701020 & 2011-02-07 & 114.82353303 & 5.22212100 & 114.82289898 & 5.22175504 & 0.015 & 0.014 \\
+Procyon & ibti01010 & 2012-03-09 & 114.82341201 & 5.22160704 & 114.82259165 & 5.22143779 & 0.014 & 0.014 \\
+Procyon & ibti01020 & 2012-03-09 & 114.82341141 & 5.22160433 & 114.82259122 & 5.22143346 & 0.014 & 0.014 \\
+Procyon & ic1k01010 & 2013-02-03 & 114.82323891 & 5.22145217 & 114.82231080 & 5.22143916 & 0.015 & 0.014 \\
+Procyon & ic1k01020 & 2013-02-03 & 114.82323878 & 5.22145186 & 114.82231053 & 5.22144024 & 0.015 & 0.014 \\
+Procyon & ica101010 & 2014-09-14 & 114.82288220 & 5.22084403 & 114.82186590 & 5.22112401 & 0.011 & 0.011 \\
+Procyon & ica101020 & 2014-09-14 & 114.82288289 & 5.22084294 & 114.82186585 & 5.22112090 & 0.011 & 0.011 \\
+Procyon & icvd01020 & 2016-10-03 & 114.82249139 & 5.22018343 & 114.82148783 & 5.22080915 & 0.013 & 0.013 \\
+Procyon & icvd01040 & 2016-10-03 & 114.82249652 & 5.22018271 & 114.82148815 & 5.22080977 & 0.003 & 0.003
+\enddata
+\tablecomments{The RA and Dec positions are in decimal degrees, the errors in the RA and Dec are in arcseconds.}
+\end{deluxetable}
+
+
+\begin{deluxetable}{lcccccc}
+\tablecaption{Orbital Elements for Sirius, Procyon, and $\mu$~Cassiopeiae\label{tab:orbits}}
+\tablehead{
+\colhead{Parameter} &
+\colhead{Sirius} & \colhead{$\sigma$} &
+\colhead{Procyon} & \colhead{$\sigma$} &
+\colhead{$\mu$~Cas} & \colhead{$\sigma$}
+}
+\startdata
+Orbital period, $P$ (yr)                     & 50.1284 & 0.0043 & 40.84   & 0.022  & 21.568 & 0.015  \\
+Semimajor axis, $a$ (arcsec)                & 7.4957  & 0.0025 & 4.3075 & 0.0016 & 0.9985 & 0.0013 \\
+Inclination, $i$ (deg)                      & 136.336 & 0.04   & 31.408 & 0.05   & 110.671 & 0.064 \\
+Position angle of node, $\Omega$ (deg)      & 45.4    & 0.071  & 100.683 & 0.095  & 223.868 & 0.064 \\
+Epoch of periastron, $T_0$ (yr)             & 1994.5715 & 0.0058 & 1968.076 & 0.023 & 1997.2235 & 0.0067 \\
+Eccentricity, $e$                           & 0.59142 & 0.00037 & 0.39785 & 0.00025 & 0.5885 & 0.0011 \\
+Longitude of periastron, $\omega$ (deg)     & 149.161 & 0.075  & 89.23  & 0.11   & 330.37 & 0.18   \\
+Primary mass, $M_{\mathrm{A}}$ ($M_\odot$)  & 2.063   & 0.023  & 1.478  & 0.012  & 0.744  & 0.0122 \\
+Secondary mass, $M_{\mathrm{B}}$ ($M_\odot$)& 1.018   & 0.011  & 0.592  & 0.006  & 0.1728 & 0.0035 \\
+Systemic RV (km\,s$^{-1}$)                  & -8.47 & \nodata & -4.115 & \nodata & -97 & \nodata \\
+Parallax (milliarcsec)                     & 379.21 & 1.58 & 285.93 & 1.26 & 132.4 & 0.43 \\ 
+\enddata
+\tablecomments{Quoted uncertainties are $1\sigma$. The data are from the papers by Bond.}
+\end{deluxetable}
+
+\begin{deluxetable}{lcccccc}
+\tablecaption{Center-of-Mass Astrometric Parameters at Epoch J1991.25\label{tab:cm_astrometry}}
+\tablehead{
+\colhead{Parameter} &
+\colhead{Sirius CM} & \colhead{$\sigma$} &
+\colhead{Procyon CM} & \colhead{$\sigma$} &
+\colhead{$\mu$~Cas CM} & \colhead{$\sigma$}
+}
+\startdata
+Right ascension, $\alpha$ (deg)              & 101.2884749 & \nodata & 114.8274028 & \nodata & 17.0539235 & \nodata \\
+Declination, $\delta$ (deg)                  & $-16.7128166$ & \nodata & 5.2278806 & \nodata & 54.9242783 & \nodata \\
+Proper motion in RA, $\mu_{\alpha*}$ (mas\,yr$^{-1}$)
+                                            & $-551.945$ & 2.153 & $-738.334$ & 14.734 & 5945.242 & 15.56 \\
+Proper motion in Dec, $\mu_{\delta}$ (mas\,yr$^{-1}$)
+                                            & $-1256.457$ & 4.124 & $-1064.934$ & 12.269 & $-1607.441$ & 11.088 \\
+Parallax, $\varpi$ (mas)                     & 379.21 & \nodata & 285.93 & \nodata & 132.4 & \nodata \\
+Systemic radial velocity (km\,s$^{-1}$)      & $-8.47$ & \nodata & $-4.115$ & \nodata & $-97$ & \nodata \\
+\enddata
+\tablecomments{
+Proper motions are given in the standard form $\mu_{\alpha*} = \dot{\alpha}\cos\delta$.
+Quoted uncertainties are $1\sigma$.
+}
+\end{deluxetable}
+
+
+
+\subsection{Figures\label{subsec:figures}}
+
+Figures subsection
+
+\section{Revision tracking and color highlighting} \label{sec:highlight}
+
+Revision tracking section. Not yet used. May be deleted if not useful.
+
+%% Please use the acknowledgment and contribution environments. This will 
+%% be anonomyized when the "anonymous" style option is used. 
+\begin{acknowledgments}
+
+This research is based on observations made with the NASA/ESA Hubble Space Telescope obtained from the Space Telescope Science
+Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS
+5–26555. These observations are associated with program 12296.
+
+The data described here may be obtained from the MAST archive at
+\dataset[doi:10.17909/T9RP4V]{https://dx.doi.org/10.17909/T9RP4V}.
+
+\end{acknowledgments}
+
+\begin{contribution}
+%%This section gives authors the space to recognize author
+%%contributions. The text inside this environment is NOT counted
+%%towards the total word quanta. At a minimum, manuscripts are
+%%expected to include this text: 
+
+  Author Hennessy obtained the data, processed the data, wrote and edited the manuscript.
+
+  Authors Frouard, Matson, Mason, and Kaplan provided subject matter expertise, code to propagate orbits, and editing of
+  the manuscript.
+
+  Not sure this is helpful and/or needed.
+  
+%% But authors are expected to provide more specific details, e.g. 
+%%
+%%SC was responsible for writing and submitting the manuscript.
+%%WWM came up with the initial research concept and edited the manuscript.
+%%OTS obtained the funding and edited the manuscript.
+%%EBF provided the formal analysis and validation. He also edited the manuscript.
+%%GEH Supervised the undergraduates, wrote the software and administers the project github and Zenodo repositories.
+%%
+%% Authors can use the Contributor Role Taxonomy (CRediT) at
+%% https://credit.niso.org
+%% for ideas on how write a good statement tailored to their needs.
+
+\end{contribution}
+
+%% To help institutions obtain information on the effectiveness of their 
+%% telescopes the AAS Journals has created a group of keywords for telescope 
+%% facilities.
+%
+%% Following the acknowledgments section, use the following syntax and the
+%% \facility{} or \facilities{} macros to list the keywords of facilities used 
+%% in the research for the paper.  Each keyword is check against the master 
+%% list during copy editing.  Individual instruments can be provided in 
+%% parentheses, after the keyword, but they are not verified.
+\facilities{HST(WFPC2)}
+
+%% Similar to \facility{}, there is the optional \software command to allow 
+%% authors a place to specify which programs were used during the creation of 
+%% the manuscript. Authors should list each code and include either a
+%% citation or url to the code inside ()s when available.
+\software{astropy\citep{2013A&A...558A..33A,2018AJ....156..123A,2022ApJ...935..167A},
+  novas\citep{2012ascl.soft02003K},
+  scipy\citep{Virtanen2020SciPy}}
+
+%% Appendix material should be preceded with a single \appendix command.
+%% There should be a \section command for each appendix. Mark appendix
+%% subsections with the same markup you use in the main body of the paper.
+%%
+%% Each Appendix (indicated with \section) will be lettered A, B, C, etc.
+%% The equation counter will reset when it encounters the \appendix
+%% command and will number appendix equations (A1), (A2), etc. The
+%% Figure and Table counter will not reset.
+
+%\appendix
+
+%\section{Appendix information}
+
+%Appendix section.
+
+%% For this sample we use BibTeX plus aasjournalv7.bst to generate the
+%% the bibliography. The sample7.bib file was populated from ADS. To
+%% get the citations to show in the compiled file do the following:
+%%
+%% pdflatex sample7.tex
+%% bibtext sample7
+%% pdflatex sample7.tex
+%% pdflatex sample7.tex
+
+\bibliography{sample701}{}
+\bibliographystyle{aasjournalv7}
+
+%% This command is needed to show the entire author+affiliation list when
+%% the collaboration and author truncation commands are used.  It has to
+%% go at the end of the manuscript.
+%\allauthors
+
+%% Include this line if you are using the \added, \replaced, \deleted
+%% commands to see a summary list of all changes at the end of the article.
+%\listofchanges
+
+\end{document}
+
+% End of file `sample7.tex'.
