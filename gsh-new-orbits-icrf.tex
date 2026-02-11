@@ -113,7 +113,7 @@
 
 \begin{document}
 
-\title{Astrometric parameters for three binary systems expressed in the ICRF}
+\title{Center-of-Mass Astrometric Parameters for Three Binary Systems in the ICRF}
 
 %% A significant change from AASTeX v6+ is in the author blocks. Now an email
 %% address is required for each author. This means that each author requires
@@ -194,12 +194,11 @@
 %% Mark off the abstract in the ``abstract'' environment. 
 \begin{abstract}
 
-  We present astrometric parameters describing the center-of-mass (CM) motions of three nearby binary systems: Sirius
-(HIP~32349), Procyon (HIP~37279), and $\mu$~Cassiopeiae (HIP~5336). When combined with well-determined orbital elements,
-these CM astrometric parameters enable accurate predictions of the motions of these systems in the International
-Celestial Reference Frame (ICRF). This approach yields substantially improved positional predictions compared to those
-obtained by propagating Hipparcos catalog positions alone, with direct relevance for high-precision celestial
-navigation. 
+We present center-of-mass (CM) astrometric solutions for three nearby binary systems: Sirius (HIP~32349), Procyon
+(HIP~37279), and $\mu$~Cassiopeiae (HIP~5336). When combined with published orbital elements, these solutions enable
+accurate predictions of the inertial motions of these systems in the International Celestial Reference Frame
+(ICRF). This approach yields substantially improved positional predictions relative to propagation of Hipparcos catalog
+entries alone, with direct relevance for high-precision celestial navigation. 
 \end{abstract}
 
 %% Keywords should appear after the \end{abstract} command. 
@@ -230,19 +229,20 @@ decades include the Fifth Fundamental Catalogue (FK5; \citealt{1988VeARI..32....
 \citep{1997A&A...323L..49P}, and the three Gaia data releases
 \citep{2016A&A...595A...2G,2018A&A...616A...1G,2023A&A...674A...1G}. 
 
-All astrometric catalogs are subject to systematic and statistical limitations. In particular, stellar multiplicity has
+All astrometric catalogs exhibit both systematic and statistical limitations. In particular, stellar multiplicity has
 long been recognized as a significant source of degraded catalog accuracy
-\citep{1975ARA&A..13..295V,1997A&A...323L..49P,1999A&A...341..121S,2001A&A...372..935P,2017ApJ...840L...1M}. An
-additional complication arises from the markedly different temporal sampling of the two principal space-based
-astrometric missions: Hipparcos observed for approximately three years, while Gaia DR3 spans roughly 33 months, with the
-two missions separated by nearly 24 years. This highly non-uniform time coverage complicates the direct combination of
-Hipparcos and Gaia astrometric data \citep{2019A&A...623A..72K}. 
+\citep{1975ARA&A..13..295V,1997A&A...323L..49P,1999A&A...341..121S,2001A&A...372..935P,2017ApJ...840L...1M}. In
+unresolved or partially resolved systems, catalog positions reflect photocenter motion rather than inertial
+center-of-mass motion. An additional complication arises from the markedly different temporal sampling of the two
+principal space-based astrometric missions: Hipparcos obtained observations over approximately three years, while Gaia
+DR3 spans roughly 33 months, with the two missions separated by approximately 24.75~yr (J1991.25 to J2016.0). This
+uneven time coverage complicates the direct combination of Hipparcos and Gaia astrometric data
+\citep{2019A&A...623A..72K}. 
 
 During a routine update of the USNO Guidance and Navigation Catalog (Version~1.2; \citealt{USNOGNC}), it became apparent
-that accurate propagated positions for several well-known bright stars---including Sirius, Procyon, $\alpha$~Centauri,
-and Polaris---could not be obtained using standard five-parameter astrometric solutions alone. These stars share two
-critical properties: extreme brightness, which results in incomplete representation of the primary components in Gaia
-DR3, and membership in binary or multiple systems. 
+that accurate propagated positions for several nearby bright stars—including Sirius, Procyon, $\alpha$~Centauri, and
+Polaris—could not be obtained using standard five-parameter astrometric solutions alone. In each case, the primary
+component is sufficiently bright that it is absent from Gaia DR3, and the system is known to be binary or multiple. 
 
 Sirius is among the earliest stellar systems for which an orbital solution was determined
 \citep{10.1093/mnras/49.8.420a}, with a highly precise modern orbit derived from Hubble Space Telescope (HST)
@@ -262,31 +262,30 @@ motion introduces positional errors comparable to the orbital semimajor axis.
 
 \section{Data and Data Reduction} \label{sec:data_dr}
 
-All three systems analyzed in this study---Sirius, Procyon, and $\mu$~Cassiopeiae---have been observed with the Hubble
-Space Telescope, with the relevant astrometric analyses presented in three studies led by Bond
-\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. In each case, the analyses relied on measurements
-of relative position angles and separations between the binary components, rather than absolute right ascension and
-declination. Consequently, the results are insensitive to telescope pointing errors, provided that both components
-remain well within the detector field of view. 
+All three systems analyzed in this study were observed with the Hubble Space Telescope (HST), with relative astrometric
+analyses presented in three studies led by Bond \citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. In
+each case, the analysis relied on measurements of relative position angles and separations between the binary components
+rather than absolute right ascension and declination. Consequently, the derived quantities are insensitive to telescope
+pointing errors, provided that both components remain well within the detector field of view. 
 
-We retrieved archival imaging data from the Mikulski Archive for Space Telescopes (MAST), including observations beyond
-those obtained under proposal~12296. Inspection of the images revealed that the WFC3 observations provide substantially
+Archival imaging data were retrieved from the Mikulski Archive for Space Telescopes (MAST), including observations
+beyond those obtained under proposal~12296. Inspection of the data shows that WFC3 observations achieve substantially
 higher signal-to-noise ratios than those obtained with WFPC2. For a linear astrometric model fitted to uniformly sampled
-position measurements with constant single-epoch precision, the formal uncertainty of the proper motion scales as
+position measurements with constant single-epoch precision, the formal uncertainty in proper motion scales as
 $T^{-3/2}$, where $T$ is the total observational time baseline
-\citep{Wielen1997,vanLeeuwen2007,Lindegren2021}. Accordingly, we restrict our analysis to only the WFC3 data when deriving
+\citep{Wielen1997,vanLeeuwen2007,Lindegren2021}. Accordingly, we restrict our analysis to WFC3 data when deriving
 astrometric parameters. 
 
-We processed each of the three stars independently. We inspected each data file to ensure
-that we could measure the position of the primary and secondary. In many, if not most cases, the secondary was of low
-enough flux that a fitted position could not be performed, in this case the pixel value of the peak flux was
-chosen, and the error was set to 1 pixel. With respect to the primary, when the peak was not saturated, a position was
-fitted. For these two situations, a two dimensional gaussian was fit using a Astropy Levenberg-Marquardt algorithm and
-least squares statistic, and the fitted error was used. When the primary was saturated, two points on each of the four
-diffraction spikes were chosen, and then the intersection x,y locations were calculated using Cramer's
-rule\citep{Cramer1750}. The x,y positions were converted into Ra, Dec pairs using the Astropy WCS routines, being
-careful to take into account the 1 based WCS routines and the 0 base used in python. We list the ICRF positions, along
-with the calculated errors in Table~\ref{tab:positions}. 
+We processed each system independently. When the primary was unsaturated, a two-dimensional Gaussian was fit using the
+Astropy implementation of the Levenberg–Marquardt algorithm with a least-squares statistic. When saturated, two points
+were selected along each of the four diffraction spikes, and their intersections were computed using Cramer's rule
+\citep{Cramer1750}. Pixel coordinates were converted to right ascension and declination using Astropy WCS routines,
+taking into account the difference between 1-based WCS indexing and the 0-based indexing used in Python. 
+
+The parallax displacement was removed from both components prior to fitting proper motions. The proper motion in right
+ascension was fit using $\mu_{\alpha*} = \dot{\alpha}\cos\delta$, following the standard astrometric convention
+\citep{vanLeeuwen2007,Lindegren2021}. The declination used in the fit corresponds to the CM declination at epoch
+J1991.25. 
 
 Once the ICRF positions were calculated as a function of time, the center of mass of the three systems can be
 calculated at each observation date, along with the astrometric parameters for the center of mass of the system. The
@@ -486,9 +485,11 @@ Position angles are measured east of north.}
 
 \section{Conclusions} \label{sec:conclusions}
 
-We provide center of mass astrometric parameters for three binary systems that are used in celestial navigation. We
-provide an ephemeris for the center of mass, the primary, and the secondary on the ICRF for every fifth year from 2025
-to 2050. 
+We provide center-of-mass astrometric parameters for three binary systems relevant to celestial navigation. For all
+three systems, differences between propagated Hipparcos positions and the CM-based solutions reach several arcseconds
+over multi-decade baselines, comparable to the orbital semimajor axis. We provide predicted ephemerides for the center
+of mass, primary, and secondary components at five-year intervals from 2025 to 2050 in the ICRF. 
+
 
 \section{Revision tracking and color highlighting} \label{sec:highlight}
 
