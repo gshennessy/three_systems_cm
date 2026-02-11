@@ -296,15 +296,20 @@ of 1991.25, and the masses of the two stars in order to get the ICRF position of
 each HST position in Table~\ref{tab:positions}, the effect of the finite parallax was removed from both the primary and
 secondary's position, the center of mass position calculated, and then the proper motions fit. The proper motion in RA
 was fit using $RA*\cos(Dec)$ as the current standard in astrometry\citep{1997A&A...323L..49P}. The value of the
-declination in the fit was the Declination of the system CM at epoch 1991.25. 
+declination in the fit was the Declination of the system CM at epoch 1991.25. The calculated values are listed in
+Table~\ref{tab:cm_astrometry}.
 
+We provide tabulated positions, in increments of 5 years, from 2025 to 2050 in Table~\ref{tab:cm_ephemeris}. The table
+was designed to resemble Table 12 of \citet{2021AJ....162...14A}. We only tablulated ever fifth year since we did not
+include the effect of parallax in our ephemeris to save space, which should be a simple exercise if the  users needs
+this in the future. 
 
 \begin{deluxetable}{ccccccccc}
 \tablehead{\colhead{System Name} & \colhead{Dataset} & \colhead{Time} & \colhead{Pri RA} & \colhead{Pri Dec} &
   \colhead{Sec RA} & \colhead{Sec Dec} & \colhead{$\sigma$ RA} & \colhead{$\sigma$ Dec}} 
 \tablecaption{ICRF positions and errors for three non--single systems \label{tab:positions}}
 \tabletypesize{\scriptsize}
-\tablewidth{0pt} 
+\tablewidth{468pt} 
 \startdata
 $\mu$ Cas & ib7j02010 & 2010-01-09 & 17.08474076 & 54.91585401 & 17.08529206 & 54.91611363 & 0.036 & 0.037 \\
 $\mu$ Cas & ib7j02020 & 2010-01-09 & 17.08474075 & 54.91585400 & 17.08529205 & 54.91611362 & 0.036 & 0.037 \\
@@ -380,17 +385,17 @@ Procyon & icvd01040 & 2016-10-03 & 114.82249652 & 5.22018271 & 114.82148815 & 5.
 \colhead{$\mu$~Cas} & \colhead{$\sigma$}
 }
 \startdata
-Orbital period, $P$ (yr)                     & 50.1284 & 0.0043 & 40.84   & 0.022  & 21.568 & 0.015  \\
-Semimajor axis, $a$ (arcsec)                & 7.4957  & 0.0025 & 4.3075 & 0.0016 & 0.9985 & 0.0013 \\
-Inclination, $i$ (deg)                      & 136.336 & 0.04   & 31.408 & 0.05   & 110.671 & 0.064 \\
-Position angle of node, $\Omega$ (deg)      & 45.4    & 0.071  & 100.683 & 0.095  & 223.868 & 0.064 \\
-Epoch of periastron, $T_0$ (yr)             & 1994.5715 & 0.0058 & 1968.076 & 0.023 & 1997.2235 & 0.0067 \\
-Eccentricity, $e$                           & 0.59142 & 0.00037 & 0.39785 & 0.00025 & 0.5885 & 0.0011 \\
-Longitude of periastron, $\omega$ (deg)     & 149.161 & 0.075  & 89.23  & 0.11   & 330.37 & 0.18   \\
-Primary mass, $M_{\mathrm{A}}$ ($M_\odot$)  & 2.063   & 0.023  & 1.478  & 0.012  & 0.744  & 0.0122 \\
-Secondary mass, $M_{\mathrm{B}}$ ($M_\odot$)& 1.018   & 0.011  & 0.592  & 0.006  & 0.1728 & 0.0035 \\
-Systemic RV (km\,s$^{-1}$)                  & -8.47 & \nodata & -4.115 & \nodata & -97 & \nodata \\
-Parallax (milliarcsec)                     & 379.21 & 1.58 & 285.93 & 1.26 & 132.4 & 0.43 \\ 
+Orbital period, $P$ (yr)                 & 50.1284   & 0.0043  & 40.84    & 0.022   & 21.568    & 0.015  \\
+Semimajor axis, $a$ (arcsec)             & 7.4957    & 0.0025  & 4.3075   & 0.0016  & 0.9985    & 0.0013 \\
+Inclination, $i$ (deg)                   & 136.336   & 0.04    & 31.408   & 0.05    & 110.671   & 0.064 \\
+Position angle of node, $\Omega$ (deg)   & 45.4      & 0.071   & 100.683  & 0.095   & 223.868   & 0.064 \\
+Epoch of periastron, $T_0$ (yr)          & 1994.5715 & 0.0058  & 1968.076 & 0.023   & 1997.2235 & 0.0067 \\
+Eccentricity, $e$                        & 0.59142   & 0.00037 & 0.39785  & 0.00025 & 0.5885    & 0.0011 \\
+Longitude of periastron, $\omega$ (deg)  & 149.161   & 0.075   & 89.23    & 0.11    & 330.37    & 0.18   \\
+Primary mass, $M_{\mathrm{A}}$ ($M_\odot$)   & 2.063     & 0.023   & 1.478    & 0.012   & 0.744     & 0.0122 \\
+Secondary mass, $M_{\mathrm{B}}$ ($M_\odot$) & 1.018     & 0.011   & 0.592    & 0.006   & 0.1728    & 0.0035 \\
+Systemic RV (km\,s$^{-1}$)                & -8.47     & \nodata & -4.115   & \nodata & -97       & \nodata \\
+Parallax (milliarcsec)                   & 379.21    & 1.58    & 285.93   & 1.26    & 132.4     & 0.43 \\ 
 \enddata
 \tablecomments{Quoted uncertainties are $1\sigma$. The data are from the papers by Bond.}
 \end{deluxetable}
@@ -419,11 +424,71 @@ Quoted uncertainties are $1\sigma$.
 }
 \end{deluxetable}
 
+\begin{deluxetable*}{lcrrrrrrrrrr}
+\tablecaption{Predicted ephemeris for the Center of Mass, Primary, and Secondary for Sirius, Procyon, and
+  $\mu$~Cassiopeiae\label{tab:cm_ephemeris}} 
+\tablehead{
+\colhead{Epoch} &
+\colhead{System} &
+\colhead{RA$_\mathrm{CM}$} &
+\colhead{Dec$_\mathrm{CM}$} &
+\colhead{RA$_A$} &
+\colhead{Dec$_A$} &
+\colhead{RA$_B$} &
+\colhead{Dec$_B$} &
+\colhead{$\Delta$RA} &
+\colhead{$\Delta$Dec} &
+\colhead{$\rho$} &
+\colhead{PA} \\
+\colhead{(yr)} &
+\colhead{Name} &
+\colhead{(deg)} &
+\colhead{(deg)} &
+\colhead{(deg)} &
+\colhead{(deg)} &
+\colhead{(deg)} &
+\colhead{(deg)} &
+\colhead{(as)} &
+\colhead{(as)} &
+\colhead{(deg)} &
+\colhead{(as)}
+}
+\startdata
+2025.00 & $\mu Cas$&  17.1508775 & 54.9091700 & 17.1508032 & 54.9091561 & 17.1511974 & 54.9092297&  -0.816 & -0.265 &  0.858&  71.998\\
+2025.00 & Procyon  & 114.8204521 &  5.2178968 &114.8205303 &  5.2175014 &114.8202569 &  5.2188839&   0.980 & -4.977 &  5.072& 348.860\\
+2025.00 & Sirius   & 101.2830719 &-16.7245958 &101.2821487 &-16.7251302 &101.2849427 &-16.7235128&  -9.633 & -5.823 & 11.256&  58.849\\
+2030.00 & $\mu Cas$&  17.1652349 & 54.9069251 & 17.1651292 & 54.9068813 & 17.1656899 & 54.9071137&  -1.160 & -0.836 &  1.430&  54.219\\
+2030.00 & Procyon  & 114.8194224 &  5.2164177 &114.8193282 &  5.2160207 &114.8196577 &  5.2174090&  -1.181 & -4.998 &  5.136&  13.297\\
+2030.00 & Sirius   & 101.2822714 &-16.7263409 &101.2815204 &-16.7269673 &101.2837933 &-16.7250714&  -7.836 & -6.825 & 10.392&  48.944\\
+2035.00 & $\mu Cas$&  17.1795907 & 54.9046786 & 17.1795119 & 54.9046292 & 17.1799301 & 54.9048913&  -0.866 & -0.944 &  1.281&  42.534\\
+2035.00 & Procyon  & 114.8183927 &  5.2149386 &114.8181469 &  5.2146265 &114.8190064 &  5.2157178&  -3.082 & -3.929 &  4.993&  38.110\\
+2035.00 & Sirius   & 101.2814708 &-16.7280859 &101.2810028 &-16.7287092 &101.2824193 &-16.7268228&  -4.883 & -6.791 &  8.364&  35.721\\
+2040.00 & $\mu Cas$&  17.1939449 & 54.9024304 & 17.1939679 & 54.9024345 & 17.1938461 & 54.9024128&   0.252 &  0.078 &  0.264& 252.810\\
+2040.00 & Procyon  & 114.8173630 &  5.2134595 &114.8170319 &  5.2133123 &114.8181897 &  5.2138270&  -4.151 & -1.853 &  4.546&  65.946\\
+2040.00 & Sirius   & 101.2806703 &-16.7298310 &101.2806088 &-16.7302686 &101.2807949 &-16.7289441&  -0.642 & -4.768 &  4.811&   7.665\\
+2045.00 & $\mu Cas$&  17.2082975 & 54.9001805 & 17.2082451 & 54.9001789 & 17.2085231 & 54.9001873&  -0.576 & -0.030 &  0.576&  86.986\\
+2045.00 & Procyon  & 114.8163333 &  5.2119804 &114.8160653 &  5.2120523 &114.8170024 &  5.2118010&  -3.360 &  0.905 &  3.479& 105.072\\
+2045.00 & Sirius   & 101.2798697 &-16.7315760 &101.2801192 &-16.7314409 &101.2793642 &-16.7318498&   2.603 &  1.472 &  2.990& 240.510\\
+2050.00 & $\mu Cas$&  17.2226485 & 54.8979289 & 17.2225467 & 54.8978925 & 17.2230870 & 54.8980856&  -1.119 & -0.695 &  1.317&  58.141\\
+2050.00 & Procyon  & 114.8153036 &  5.2105014 &114.8153591 &  5.2106692 &114.8151650 &  5.2100824&   0.696 &  2.112 &  2.224& 198.232\\
+2050.00 & Sirius   & 101.2790692 &-16.7333211 &101.2788755 &-16.7329609 &101.2794616 &-16.7340510&  -2.021 &  3.924 &  4.414& 152.757\\
+\enddata
+
+\tablecomments{
+RA offsets are $\Delta$RA$=\mathrm{RA}_B-\mathrm{RA}_A$ (including the $\cos\delta$ factor).
+Position angles are measured east of north.}
+\end{deluxetable*}
 
 
-\subsection{Figures\label{subsec:figures}}
+%\subsection{Figures\label{subsec:figures}}
+%
+%Figures subsection
 
-Figures subsection
+\section{Conclusions} \label{sec:conclusions}
+
+We provide center of mass astrometric parameters for three binary systems that are used in celestial navigation. We
+provide an ephemeris for the center of mass, the primary, and the secondary on the ICRF for every fifth year from 2025
+to 2050. 
 
 \section{Revision tracking and color highlighting} \label{sec:highlight}
 
