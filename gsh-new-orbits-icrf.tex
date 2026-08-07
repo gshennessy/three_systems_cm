@@ -221,7 +221,7 @@ entries alone, with direct relevance for high-precision celestial navigation.
 %% That way, if you change the order of any elements, LaTeX will
 %% automatically renumber them.
 
-\section{Introduction} \label{sec:intro}
+\section{Introduction}\label{sec:intro}
 
 Accurate astrometric positions of bright stars are essential for navigation applications, both on the ground and in
 space. Although any enumeration of astrometric catalogs is necessarily incomplete, major catalogs produced over recent
@@ -260,10 +260,10 @@ $\mu$~Cassiopeiae is a binary system composed of two main-sequence stars with vi
 0.015$~yr \citep{2020ApJ...904..112B}. For all three systems, propagating positions without accounting for orbital
 motion introduces positional errors comparable to the orbital semimajor axis. 
 
-\section{Data and Data Reduction} \label{sec:data_dr}
+\section{Data and Data Reduction}\label{sec:data_dr}
 
 All three systems analyzed in this study were observed with the Hubble Space Telescope (HST), with relative astrometric
-analyses presented in three studies led by Bond \citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. In
+analyses presented in three studies led by Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. In
 each case, the analysis relied on measurements of relative position angles and separations between the binary components
 rather than absolute right ascension and declination. Consequently, the derived quantities are insensitive to telescope
 pointing errors, provided that both components remain well within the detector field of view. 
@@ -279,7 +279,9 @@ astrometric parameters.
 We processed each system independently. When the primary was unsaturated, a two-dimensional Gaussian was fit using the
 Astropy implementation of the Levenberg–Marquardt algorithm with a least-squares statistic. When saturated, two points
 were selected along each of the four diffraction spikes, and their intersections were computed using Cramer's rule
-\citep{Cramer1750}. Pixel coordinates were converted to right ascension and declination using Astropy WCS routines,
+\citep{Cramer1750}. This method of determining the position of saturated stars was also done by
+Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. 
+Pixel coordinates were converted to right ascension and declination using Astropy WCS routines,
 taking into account the difference between 1-based WCS indexing and the 0-based indexing used in Python. 
 
 The parallax displacement was removed from both components prior to fitting proper motions. The proper motion in right
@@ -292,85 +294,85 @@ calculated at each observation date, along with the astrometric parameters for t
 initial starting point for each calculation was the Hipparcos position of the primary star of each system, using the
 orbital parameters from Table~\ref{tab:orbits}. The separation and position angle was calculated at the Hipparcos epoch
 of 1991.25, and the masses of the two stars in order to get the ICRF position of the center of mass of the system. For
-each HST position in Table~\ref{tab:positions}, the effect of the finite parallax was removed from both the primary and
-secondary's position, the center of mass position calculated, and then the proper motions fit. The proper motion in RA
+each HST position in Table~\ref{tab:positions}, the effect of the finite parallax was removed from both the primary (observed) and
+secondary's (calculated) position, the center of mass position calculated, and then the proper motions fit. The proper motion in RA
 was fit using $RA*\cos(Dec)$ as the current standard in astrometry\citep{1997A&A...323L..49P}. The value of the
 declination in the fit was the Declination of the system CM at epoch 1991.25. The calculated values are listed in
 Table~\ref{tab:cm_astrometry}. For all three systems, the secular acceleration is small in the sense that the maximum
 value after 30 years is less than the errors in our solution.
 
 We provide tabulated positions, in increments of 5 years, from 2025 to 2050 in Table~\ref{tab:cm_ephemeris}. The table
-was designed to resemble Table 12 of \citet{2021AJ....162...14A}. We only tablulated ever fifth year since we did not
+was designed to resemble Table 12 of \citet{2021AJ....162...14A}. We only tablulated every fifth year since we did not
 include the effect of parallax in our ephemeris to save space, which should be a simple exercise if the  users needs
 this in the future. 
 
 \begin{deluxetable}{cccrrrrcc}
 \tablehead{\colhead{System Name} & \colhead{Dataset} & \colhead{Time} & \colhead{Pri RA} & \colhead{Pri Dec} &
   \colhead{Sec RA} & \colhead{Sec Dec} & \colhead{$\sigma$ RA} & \colhead{$\sigma$ Dec}} 
-\tablecaption{ICRF positions and errors for three non--single systems \label{tab:positions}}
+\tablecaption{ICRF positions and errors for three non--single systems\label{tab:positions}}
 \tabletypesize{\scriptsize}
-\tablewidth{468pt} 
+\tablewidth{511pt} 
 \startdata
-$\mu$ Cas & ib7j02010 & 2010-01-09 & 17.08474076 & 54.91585401 & 17.08529206 & 54.91611363 & 0.036 & 0.037 \\
-$\mu$ Cas & ib7j02020 & 2010-01-09 & 17.08474075 & 54.91585400 & 17.08529205 & 54.91611362 & 0.036 & 0.037 \\
-$\mu$ Cas & ib7j02030 & 2010-01-09 & 17.08474067 & 54.91585394 & 17.08529197 & 54.91611356 & 0.036 & 0.037 \\
-$\mu$ Cas & ib7j02040 & 2010-01-09 & 17.08474023 & 54.91585382 & 17.08529153 & 54.91611344 & 0.036 & 0.037 \\
-$\mu$ Cas & ibk702010 & 2010-12-03 & 17.08628543 & 54.91545152 & 17.08681730 & 54.91572010 & 0.006 & 0.007 \\
-$\mu$ Cas & ibk702020 & 2010-12-03 & 17.08628541 & 54.91545152 & 17.08681728 & 54.91572010 & 0.006 & 0.007 \\
-$\mu$ Cas & ibk702030 & 2010-12-03 & 17.08628531 & 54.91545153 & 17.08681718 & 54.91572011 & 0.006 & 0.007 \\
-$\mu$ Cas & ibk702040 & 2010-12-03 & 17.08628529 & 54.91545153 & 17.08681716 & 54.91572011 & 0.006 & 0.007 \\
-$\mu$ Cas & ibti02010 & 2011-12-05 & 17.08772929 & 54.91509275 & 17.08822680 & 54.91536490 & 0.025 & 0.025 \\
-$\mu$ Cas & ibti02020 & 2011-12-05 & 17.08772945 & 54.91509258 & 17.08822696 & 54.91536473 & 0.025 & 0.025 \\
-$\mu$ Cas & ibti02030 & 2011-12-05 & 17.08772964 & 54.91509266 & 17.08822715 & 54.91536481 & 0.025 & 0.025 \\
-$\mu$ Cas & ibti02040 & 2011-12-05 & 17.08772962 & 54.91509266 & 17.08822713 & 54.91536481 & 0.025 & 0.025 \\
-$\mu$ Cas & ic1k02010 & 2012-12-02 & 17.08948331 & 54.91464474 & 17.08993252 & 54.91491257 & 0.008 & 0.008 \\
-$\mu$ Cas & ic1k02020 & 2012-12-02 & 17.08948336 & 54.91464470 & 17.08993257 & 54.91491253 & 0.008 & 0.008 \\
-$\mu$ Cas & ic1k02030 & 2012-12-02 & 17.08975353 & 54.91452513 & 17.09020274 & 54.91479296 & 0.008 & 0.008 \\
-$\mu$ Cas & ic1k02040 & 2012-12-02 & 17.08948346 & 54.91464469 & 17.08993267 & 54.91491252 & 0.008 & 0.008 \\
-$\mu$ Cas & ica102010 & 2013-10-25 & 17.09112169 & 54.91411555 & 17.09151404 & 54.91437157 & 0.053 & 0.053 \\
-$\mu$ Cas & ica102020 & 2013-10-25 & 17.09112169 & 54.91411555 & 17.09151404 & 54.91437157 & 0.053 & 0.053 \\
-$\mu$ Cas & ica102030 & 2013-10-25 & 17.09112187 & 54.91411545 & 17.09151422 & 54.91437147 & 0.053 & 0.053 \\
-$\mu$ Cas & ica102040 & 2013-10-25 & 17.09112187 & 54.91411545 & 17.09151422 & 54.91437147 & 0.053 & 0.053 \\
-$\mu$ Cas & icjx02010 & 2015-01-06 & 17.09318699 & 54.91371843 & 17.09348098 & 54.91394378 & 0.023 & 0.023 \\
-$\mu$ Cas & icjx02020 & 2015-01-06 & 17.09305488 & 54.91364079 & 17.09334887 & 54.91386614 & 0.023 & 0.023 \\
-$\mu$ Cas & icjx02030 & 2015-01-06 & 17.09318698 & 54.91371839 & 17.09348097 & 54.91394374 & 0.023 & 0.023 \\
-$\mu$ Cas & icjx02040 & 2015-01-06 & 17.09318698 & 54.91371839 & 17.09348097 & 54.91394374 & 0.023 & 0.023 \\
-$\mu$ Cas & icvd02010 & 2016-07-11 & 17.09566986 & 54.91290773 & 17.09579716 & 54.91306039 & 0.036 & 0.036 \\
-$\mu$ Cas & icvd02020 & 2016-07-11 & 17.09566792 & 54.91290556 & 17.09579522 & 54.91305822 & 0.036 & 0.036 \\
-$\mu$ Cas & icvd02030 & 2016-07-11 & 17.09566792 & 54.91290661 & 17.09579522 & 54.91305927 & 0.036 & 0.036 \\
-$\mu$ Cas & icvd02040 & 2016-07-11 & 17.09566791 & 54.91290640 & 17.09579521 & 54.91305906 & 0.036 & 0.036 \\
-$\mu$ Cas & icvd02050 & 2016-07-11 & 17.09567078 & 54.91290497 & 17.09579808 & 54.91305763 & 0.036 & 0.036 \\
-$\mu$ Cas & icvd02060 & 2016-07-11 & 17.09566817 & 54.91290360 & 17.09579547 & 54.91305626 & 0.036 & 0.036 \\
-Sirius & ibk703010 & 2010-09-02 & 101.28474474 & -16.71961117 & 101.28737234 & -16.71957535 & 0.020 & 0.020 \\
-Sirius & ibk703020 & 2010-09-02 & 101.28474503 & -16.71961085 & 101.28737234 & -16.71957531 & 0.020 & 0.020 \\
-Sirius & ibk703030 & 2010-09-02 & 101.28474534 & -16.71961014 & 101.28737194 & -16.71957361 & 0.020 & 0.020 \\
-Sirius & ibk703040 & 2010-09-02 & 101.28474540 & -16.71961020 & 101.28737216 & -16.71957374 & 0.020 & 0.020 \\
-Sirius & ibti03010 & 2011-10-01 & 101.28455076 & -16.72005425 & 101.28729072 & -16.71987776 & 0.019 & 0.019 \\
-Sirius & ibti03020 & 2011-10-01 & 101.28455091 & -16.72005394 & 101.28729065 & -16.71987732 & 0.019 & 0.019 \\
-Sirius & ibti03030 & 2011-10-01 & 101.28454961 & -16.72005414 & 101.28729036 & -16.71987771 & 0.019 & 0.019 \\
-Sirius & ibti03040 & 2011-10-01 & 101.28454908 & -16.72005462 & 101.28729048 & -16.71987780 & 0.019 & 0.019 \\
-Sirius & ic1k03010 & 2012-09-26 & 101.28436754 & -16.72042249 & 101.28717661 & -16.72011666 & 0.029 & 0.028 \\
-Sirius & ic1k03020 & 2012-09-26 & 101.28436799 & -16.72042175 & 101.28717651 & -16.72011655 & 0.029 & 0.028 \\
-Sirius & ic1k03030 & 2012-09-26 & 101.28436664 & -16.72042145 & 101.28717603 & -16.72011632 & 0.029 & 0.028 \\
-Sirius & ic1k03040 & 2012-09-26 & 101.28436645 & -16.72042121 & 101.28717609 & -16.72011586 & 0.029 & 0.028 \\
-Sirius & ica103010 & 2014-03-31 & 101.28387978 & -16.72101333 & 101.28677062 & -16.72052229 & 0.016 & 0.016 \\
-Sirius & ica103020 & 2014-03-31 & 101.28387972 & -16.72101302 & 101.28677057 & -16.72052236 & 0.016 & 0.016 \\
-Sirius & ica103030 & 2014-03-31 & 101.28387918 & -16.72101404 & 101.28677045 & -16.72052262 & 0.016 & 0.016 \\
-Sirius & ica103040 & 2014-03-31 & 101.28387896 & -16.72101410 & 101.28677075 & -16.72052314 & 0.016 & 0.016 \\
-Sirius & icvd03010 & 2016-08-20 & 101.28366750 & -16.72186767 & 101.28666418 & -16.72108281 & 0.013 & 0.013 \\
-Sirius & icvd03020 & 2016-08-20 & 101.28366781 & -16.72186745 & 101.28666409 & -16.72108238 & 0.013 & 0.013 \\
-Sirius & icvd03030 & 2016-08-20 & 101.28366800 & -16.72186614 & 101.28666417 & -16.72108100 & 0.013 & 0.013 \\
-Sirius & icvd03040 & 2016-08-20 & 101.28366782 & -16.72186719 & 101.28666438 & -16.72108175 & 0.013 & 0.013 \\
-Procyon & ibk701010 & 2011-02-07 & 114.82353177 & 5.22211914 & 114.82289759 & 5.22175284 & 0.015 & 0.014 \\
-Procyon & ibk701020 & 2011-02-07 & 114.82353303 & 5.22212100 & 114.82289898 & 5.22175504 & 0.015 & 0.014 \\
-Procyon & ibti01010 & 2012-03-09 & 114.82341201 & 5.22160704 & 114.82259165 & 5.22143779 & 0.014 & 0.014 \\
-Procyon & ibti01020 & 2012-03-09 & 114.82341141 & 5.22160433 & 114.82259122 & 5.22143346 & 0.014 & 0.014 \\
-Procyon & ic1k01010 & 2013-02-03 & 114.82323891 & 5.22145217 & 114.82231080 & 5.22143916 & 0.015 & 0.014 \\
-Procyon & ic1k01020 & 2013-02-03 & 114.82323878 & 5.22145186 & 114.82231053 & 5.22144024 & 0.015 & 0.014 \\
-Procyon & ica101010 & 2014-09-14 & 114.82288220 & 5.22084403 & 114.82186590 & 5.22112401 & 0.011 & 0.011 \\
-Procyon & ica101020 & 2014-09-14 & 114.82288289 & 5.22084294 & 114.82186585 & 5.22112090 & 0.011 & 0.011 \\
-Procyon & icvd01020 & 2016-10-03 & 114.82249139 & 5.22018343 & 114.82148783 & 5.22080915 & 0.013 & 0.013 \\
-Procyon & icvd01040 & 2016-10-03 & 114.82249652 & 5.22018271 & 114.82148815 & 5.22080977 & 0.003 & 0.003
+$\mu$ Cas & ib7j02010 & 2010-01-09 & 17.08474076 & 54.91585401 & 17.08529206 & 54.91611363 & 0.036 & 0.037\\
+$\mu$ Cas & ib7j02020 & 2010-01-09 & 17.08474075 & 54.91585400 & 17.08529205 & 54.91611362 & 0.036 & 0.037\\
+$\mu$ Cas & ib7j02030 & 2010-01-09 & 17.08474067 & 54.91585394 & 17.08529197 & 54.91611356 & 0.036 & 0.037\\
+$\mu$ Cas & ib7j02040 & 2010-01-09 & 17.08474023 & 54.91585382 & 17.08529153 & 54.91611344 & 0.036 & 0.037\\
+$\mu$ Cas & ibk702010 & 2010-12-03 & 17.08628543 & 54.91545152 & 17.08681730 & 54.91572010 & 0.006 & 0.007\\
+$\mu$ Cas & ibk702020 & 2010-12-03 & 17.08628541 & 54.91545152 & 17.08681728 & 54.91572010 & 0.006 & 0.007\\
+$\mu$ Cas & ibk702030 & 2010-12-03 & 17.08628531 & 54.91545153 & 17.08681718 & 54.91572011 & 0.006 & 0.007\\
+$\mu$ Cas & ibk702040 & 2010-12-03 & 17.08628529 & 54.91545153 & 17.08681716 & 54.91572011 & 0.006 & 0.007\\
+$\mu$ Cas & ibti02010 & 2011-12-05 & 17.08772929 & 54.91509275 & 17.08822680 & 54.91536490 & 0.025 & 0.025\\
+$\mu$ Cas & ibti02020 & 2011-12-05 & 17.08772945 & 54.91509258 & 17.08822696 & 54.91536473 & 0.025 & 0.025\\
+$\mu$ Cas & ibti02030 & 2011-12-05 & 17.08772964 & 54.91509266 & 17.08822715 & 54.91536481 & 0.025 & 0.025\\
+$\mu$ Cas & ibti02040 & 2011-12-05 & 17.08772962 & 54.91509266 & 17.08822713 & 54.91536481 & 0.025 & 0.025\\
+$\mu$ Cas & ic1k02010 & 2012-12-02 & 17.08948331 & 54.91464474 & 17.08993252 & 54.91491257 & 0.008 & 0.008\\
+$\mu$ Cas & ic1k02020 & 2012-12-02 & 17.08948336 & 54.91464470 & 17.08993257 & 54.91491253 & 0.008 & 0.008\\
+$\mu$ Cas & ic1k02030 & 2012-12-02 & 17.08975353 & 54.91452513 & 17.09020274 & 54.91479296 & 0.008 & 0.008\\
+$\mu$ Cas & ic1k02040 & 2012-12-02 & 17.08948346 & 54.91464469 & 17.08993267 & 54.91491252 & 0.008 & 0.008\\
+$\mu$ Cas & ica102010 & 2013-10-25 & 17.09112169 & 54.91411555 & 17.09151404 & 54.91437157 & 0.053 & 0.053\\
+$\mu$ Cas & ica102020 & 2013-10-25 & 17.09112169 & 54.91411555 & 17.09151404 & 54.91437157 & 0.053 & 0.053\\
+$\mu$ Cas & ica102030 & 2013-10-25 & 17.09112187 & 54.91411545 & 17.09151422 & 54.91437147 & 0.053 & 0.053\\
+$\mu$ Cas & ica102040 & 2013-10-25 & 17.09112187 & 54.91411545 & 17.09151422 & 54.91437147 & 0.053 & 0.053\\
+$\mu$ Cas & icjx02010 & 2015-01-06 & 17.09318699 & 54.91371843 & 17.09348098 & 54.91394378 & 0.023 & 0.023\\
+$\mu$ Cas & icjx02020 & 2015-01-06 & 17.09305488 & 54.91364079 & 17.09334887 & 54.91386614 & 0.023 & 0.023\\
+$\mu$ Cas & icjx02030 & 2015-01-06 & 17.09318698 & 54.91371839 & 17.09348097 & 54.91394374 & 0.023 & 0.023\\
+$\mu$ Cas & icjx02040 & 2015-01-06 & 17.09318698 & 54.91371839 & 17.09348097 & 54.91394374 & 0.023 & 0.023\\
+$\mu$ Cas & icvd02010 & 2016-07-11 & 17.09566986 & 54.91290773 & 17.09579716 & 54.91306039 & 0.036 & 0.036\\
+$\mu$ Cas & icvd02020 & 2016-07-11 & 17.09566792 & 54.91290556 & 17.09579522 & 54.91305822 & 0.036 & 0.036\\
+$\mu$ Cas & icvd02030 & 2016-07-11 & 17.09566792 & 54.91290661 & 17.09579522 & 54.91305927 & 0.036 & 0.036\\
+$\mu$ Cas & icvd02040 & 2016-07-11 & 17.09566791 & 54.91290640 & 17.09579521 & 54.91305906 & 0.036 & 0.036\\
+$\mu$ Cas & icvd02050 & 2016-07-11 & 17.09567078 & 54.91290497 & 17.09579808 & 54.91305763 & 0.036 & 0.036\\
+$\mu$ Cas & icvd02060 & 2016-07-11 & 17.09566817 & 54.91290360 & 17.09579547 & 54.91305626 & 0.036 & 0.036\\
+Sirius & ibk703010 & 2010-09-02 & 101.28474474 & -16.71961117 & 101.28737234 & -16.71957535 & 0.020 & 0.020\\
+Sirius & ibk703020 & 2010-09-02 & 101.28474503 & -16.71961085 & 101.28737234 & -16.71957531 & 0.020 & 0.020\\
+Sirius & ibk703030 & 2010-09-02 & 101.28474534 & -16.71961014 & 101.28737194 & -16.71957361 & 0.020 & 0.020\\
+Sirius & ibk703040 & 2010-09-02 & 101.28474540 & -16.71961020 & 101.28737216 & -16.71957374 & 0.020 & 0.020\\
+Sirius & ibti03010 & 2011-10-01 & 101.28455076 & -16.72005425 & 101.28729072 & -16.71987776 & 0.019 & 0.019\\
+Sirius & ibti03020 & 2011-10-01 & 101.28455091 & -16.72005394 & 101.28729065 & -16.71987732 & 0.019 & 0.019\\
+Sirius & ibti03030 & 2011-10-01 & 101.28454961 & -16.72005414 & 101.28729036 & -16.71987771 & 0.019 & 0.019\\
+Sirius & ibti03040 & 2011-10-01 & 101.28454908 & -16.72005462 & 101.28729048 & -16.71987780 & 0.019 & 0.019\\
+Sirius & ic1k03010 & 2012-09-26 & 101.28436754 & -16.72042249 & 101.28717661 & -16.72011666 & 0.029 & 0.028\\
+Sirius & ic1k03020 & 2012-09-26 & 101.28436799 & -16.72042175 & 101.28717651 & -16.72011655 & 0.029 & 0.028\\
+Sirius & ic1k03030 & 2012-09-26 & 101.28436664 & -16.72042145 & 101.28717603 & -16.72011632 & 0.029 & 0.028\\
+Sirius & ic1k03040 & 2012-09-26 & 101.28436645 & -16.72042121 & 101.28717609 & -16.72011586 & 0.029 & 0.028\\
+Sirius & ica103010 & 2014-03-31 & 101.28387978 & -16.72101333 & 101.28677062 & -16.72052229 & 0.016 & 0.016\\
+Sirius & ica103020 & 2014-03-31 & 101.28387972 & -16.72101302 & 101.28677057 & -16.72052236 & 0.016 & 0.016\\
+Sirius & ica103030 & 2014-03-31 & 101.28387918 & -16.72101404 & 101.28677045 & -16.72052262 & 0.016 & 0.016\\
+Sirius & ica103040 & 2014-03-31 & 101.28387896 & -16.72101410 & 101.28677075 & -16.72052314 & 0.016 & 0.016\\
+Sirius & icvd03010 & 2016-08-20 & 101.28366750 & -16.72186767 & 101.28666418 & -16.72108281 & 0.013 & 0.013\\
+Sirius & icvd03020 & 2016-08-20 & 101.28366781 & -16.72186745 & 101.28666409 & -16.72108238 & 0.013 & 0.013\\
+Sirius & icvd03030 & 2016-08-20 & 101.28366800 & -16.72186614 & 101.28666417 & -16.72108100 & 0.013 & 0.013\\
+Sirius & icvd03040 & 2016-08-20 & 101.28366782 & -16.72186719 & 101.28666438 & -16.72108175 & 0.013 & 0.013\\
+Procyon & ibk701010 & 2011-02-07 & 114.82353177 & 5.22211914 & 114.82289759 & 5.22175284 & 0.015 & 0.014\\
+Procyon & ibk701020 & 2011-02-07 & 114.82353303 & 5.22212100 & 114.82289898 & 5.22175504 & 0.015 & 0.014\\
+Procyon & ibti01010 & 2012-03-09 & 114.82341201 & 5.22160704 & 114.82259165 & 5.22143779 & 0.014 & 0.014\\
+Procyon & ibti01020 & 2012-03-09 & 114.82341141 & 5.22160433 & 114.82259122 & 5.22143346 & 0.014 & 0.014\\
+Procyon & ic1k01010 & 2013-02-03 & 114.82323891 & 5.22145217 & 114.82231080 & 5.22143916 & 0.015 & 0.014\\
+Procyon & ic1k01020 & 2013-02-03 & 114.82323878 & 5.22145186 & 114.82231053 & 5.22144024 & 0.015 & 0.014\\
+Procyon & ica101010 & 2014-09-14 & 114.82288220 & 5.22084403 & 114.82186590 & 5.22112401 & 0.011 & 0.011\\
+Procyon & ica101020 & 2014-09-14 & 114.82288289 & 5.22084294 & 114.82186585 & 5.22112090 & 0.011 & 0.011\\
+Procyon & icvd01020 & 2016-10-03 & 114.82249139 & 5.22018343 & 114.82148783 & 5.22080915 & 0.013 & 0.013\\
+Procyon & icvd01040 & 2016-10-03 & 114.82249652 & 5.22018271 & 114.82148815 & 5.22080977 & 0.003 & 0.003\\
 \enddata
 \tablecomments{The RA and Dec positions are in decimal degrees, the errors in the RA and Dec are in arcseconds.}
 \end{deluxetable}
@@ -493,11 +495,6 @@ three systems, differences between propagated Hipparcos positions and the CM-bas
 over multi-decade baselines, comparable to the orbital semimajor axis. We provide predicted ephemerides for the center
 of mass, primary, and secondary components at five-year intervals from 2025 to 2050 in the ICRF. 
 
-
-\section{Revision tracking and color highlighting} \label{sec:highlight}
-
-Revision tracking section. Not yet used. May be deleted if not useful.
-
 %% Please use the acknowledgment and contribution environments. This will 
 %% be anonomyized when the "anonymous" style option is used. 
 \begin{acknowledgments}
@@ -517,13 +514,11 @@ The data described here may be obtained from the MAST archive at
 %%towards the total word quanta. At a minimum, manuscripts are
 %%expected to include this text: 
 
-  Author Hennessy obtained the data, processed the data, wrote and edited the manuscript.
+  Author Hennessy obtained the data from the archive, processed the data, wrote and edited the manuscript.
 
   Authors Frouard, Matson, Mason, and Kaplan provided subject matter expertise, code to propagate orbits, and editing of
   the manuscript.
 
-  Not sure this is helpful and/or needed.
-  
 %% But authors are expected to provide more specific details, e.g. 
 %%
 %%SC was responsible for writing and submitting the manuscript.
