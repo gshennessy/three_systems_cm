@@ -169,7 +169,7 @@
 \affiliation{US Naval Observatory}
 \email[show]{greg.hennessy@cox.net}  
 
-\author[orcid=0000-0002-2768-1606,gname=Julien, sname=Frouard]{Julien Frouard} 
+\author[orcid=0000-0002-2768-1606,gname=Julien,sname=Frouard]{Julien Frouard} 
 \affiliation{US Naval Observatory}
 \email[show]{julien.h.frouard.civ@us.navy.mil}
 
@@ -264,7 +264,7 @@ motion introduces positional errors comparable to the orbital semimajor axis.
 
 All three systems analyzed in this study were observed with the Hubble Space Telescope (HST), with relative astrometric
 analyses presented in three studies led by Bond. In each case,
-Bond's\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B} analysis relied on measurements of relative
+Bond's\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B} analyses relied on measurements of relative
 position angles and separations between the binary components rather than absolute right ascension and
 declination. Consequently, his derived quantities are insensitive to telescope pointing errors, provided that both
 components remain well within the detector field of view.   On the other hand, this paper’s data consist of right
@@ -282,7 +282,7 @@ astrometric parameters.
 We processed each system independently. When the primary was unsaturated, a two-dimensional Gaussian was fit using the
 Astropy implementation of the Levenberg–Marquardt algorithm with a least-squares statistic. When saturated, two points
 were selected along each of the four diffraction spikes, and their intersections were computed using Cramer's rule
-\citep{Cramer1750}. This method of determining the position of saturated stars was also done by
+\citep{Cramer1750}. This method of determining the positions of saturated stars was also done by
 Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. 
 Pixel coordinates were converted to right ascension and declination using Astropy WCS routines,
 taking into account the difference between 1-based WCS indexing and the 0-based indexing used in Python. 
@@ -298,15 +298,37 @@ The initial starting point for each calculation was the Hipparcos position of th
 The separation and position angle was calculated at the Hipparcos epoch of 1991.25 using the orbital parameters from 
 Table~\ref{tab:orbits}, and the masses of the two stars in order to get the ICRF position of the center of mass of the system. For
 each HST position in Table~\ref{tab:positions}, the effect of the finite parallax was removed from both the primary (observed) and
-secondary's (calculated) position, the center of mass position calculated, and then the proper motions fit. The proper motion in RA
-was fit using $RA*\cos(Dec)$ as the current standard in astrometry\citep{1997A&A...323L..49P}. The value of the
+secondary's (calculated) position, the center of mass position calculated, and then the proper motions were fit. The proper
+motion in right ascension
+is reported using $RA*\cos(Dec)$ as the current standard in astrometry\citep{1997A&A...323L..49P}. The value of the
 declination in the fit was the Declination of the system CM at epoch 1991.25. The calculated values are listed in
 Table~\ref{tab:cm_astrometry}. For all three systems, the secular acceleration is small in the sense that the maximum
 value after 30 years is less than the errors in our solution.
 
+We plot the residuals from our fits in Figure~\ref{fig:figure1}. The residuals show individual points being up to 400
+mas from the fitted line, which is worse than we had expected when this study was conceived. The residuals for the
+Sirius system are clearly not uniformly distributed. Our data reduction method requires us to accept the astrometry in
+the World Coordinate System as ``truth'', since there are no other objects on the detectors other than the stars of the
+system. 
+
+We compare our center-of-mass proper motions for Sirius and Procyon with those reported in the FK5 catalog
+\citep{1988VeARI..32....1F}. We corrected the FK5 proper motions to place them in the Hipparcos astrometric reference
+frame using the FK5--Hipparcos smoothed offsets given in the tables of \citet{2000A&A...354..732M}. 
+
+For Sirius, we obtain $(\mu_{\alpha*},\mu_\delta) = (-528.612 \pm 2.153,-1256.457 \pm 4.124)$ mas yr$^{-1}$, compared
+with the corrected FK5 values of $(-552.88 \pm 0.3878,-1204.6 \pm 0.45)$ mas yr$^{-1}$. For Procyon, our corresponding
+values are $(-735.269 \pm 14.734,-1064.934 \pm 12.269)$ mas yr$^{-1}$, compared with the corrected FK5 values of
+$(-710.0575 \pm 0.2987,-1022.8 \pm 0.39)$ mas yr$^{-1}$. 
+
+The mass ratios derived for the two systems also differ slightly between the two studies. We obtain mass ratios of 0.324
+for Sirius and 0.286 for Procyon, compared with the FK5 values of 0.282 and 0.268, respectively. The Sirius
+proper-motion components differ from the corrected FK5 values, with neither component agreeing within the
+quoted formal uncertainties. For Procyon, the right-ascension proper motion is consistent with the corrected FK5 value,
+whereas the declination component differs at the approximately $3.5\sigma$ level. 
+
 We provide tabulated positions, in increments of 5 years, from 2025 to 2050 in Table~\ref{tab:cm_ephemeris}. The table
-was designed to resemble Table 12 of \citet{2021AJ....162...14A}. We only tablulated every fifth year since we did not
-include the effect of parallax in our ephemeris to save space, which should be a simple exercise if the  users needs
+was designed to resemble Table 12 of \citet{2021AJ....162...14A}. We only tabulated every fifth year since we did not
+include the effect of parallax in our ephemeris to save space, which should be a simple exercise if the user needs
 this in the future. 
 
 \begin{deluxetable}{cccrrrrcc}
@@ -416,13 +438,13 @@ Secular Acceleration DEC (mas/yr${}^{-2}$)& 8.25E-6   & \nodata & 2.56E-6 & \nod
 \colhead{$\mu$~Cas CM} & \colhead{$\sigma$}
 }
 \startdata
-Right ascension, $\alpha$ (deg)              & 101.2884749 & \nodata & 114.8274028 & \nodata & 17.0539235 & \nodata \\
-Declination, $\delta$ (deg)                  & $-16.7128166$ & \nodata & 5.2278806 & \nodata & 54.9242783 & \nodata \\
+Right ascension, $\alpha$ (deg)              & 101.2884749 &  43.34& 114.8274028 & 301.3 & 17.0539235 & 318.3 \\
+Declination, $\delta$ (deg)                  & $-16.7128166$ & 83.02 & 5.2278806 & 250.9 & 54.9242783 & 226.83 \\
 Proper motion in RA, $\mu_{\alpha*}$ (mas\,yr$^{-1}$)
                                             & $-528.612$ & 2.153 & $-735.269$ & 14.734 & 3417.205 & 15.56 \\
 Proper motion in Dec, $\mu_{\delta}$ (mas\,yr$^{-1}$)
                                             & $-1256.457$ & 4.124 & $-1064.934$ & 12.269 & $-1607.441$ & 11.088 \\
-Parallax, $\varpi$ (mas)                     & 379.21 & \nodata & 285.93 & \nodata & 132.4 & \nodata \\
+Parallax, $\varpi$ (mas)                     & 379.21 & 1.58 & 285.93 & 0.7 & 132.4 & 0.7 \\
 Systemic radial velocity (km\,s$^{-1}$)      & $-8.47$ & \nodata & $-4.115$ & \nodata & $-97$ & \nodata \\
 \enddata
 \tablecomments{
@@ -487,8 +509,16 @@ Position angles are measured east of north.}
 \end{deluxetable*}
 
 
-%\subsection{Figures\label{subsec:figures}}
-%
+\subsection{Figures}\label{subsec:figures}
+\begin{figure}[ht]
+\gridline{\fig{sirius-residuals.png}{0.3\textwidth}{(a)}
+          \fig{procyon-residuals.png}{0.3\textwidth}{(b)}
+          \fig{mucas-residuals.png}{0.3\textwidth}{(c)}}
+\caption{The residuals, in units of milliarcseconds, for the three systems. The right ascension residuals are in red,
+  with the declination residuals in blue. The temporal axis is zero at the Hipparcos Epoch of 1991.25.}
+\label{fig:figure1}
+\end{figure}
+
 %Figures subsection
 
 \section{Conclusions} \label{sec:conclusions}
@@ -545,7 +575,7 @@ The data described here may be obtained from the MAST archive at
 %% in the research for the paper.  Each keyword is check against the master 
 %% list during copy editing.  Individual instruments can be provided in 
 %% parentheses, after the keyword, but they are not verified.
-\facilities{HST(WF3)}
+\facilities{HST(WFC3)}
 
 %% Similar to \facility{}, there is the optional \software command to allow 
 %% authors a place to specify which programs were used during the creation of 
