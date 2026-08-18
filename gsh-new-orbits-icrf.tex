@@ -252,8 +252,8 @@ semimajor axis of $7.4957 \pm 0.0025\arcsec$ and an orbital period of $50.1284 \
 \citep{2017ApJ...840...70B}. 
 
 The Procyon system \citep{Auwers1862} consists of a subgiant primary and a white dwarf companion differing in visual
-magnitude by approximately 10.5 \citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $4.3075 \pm 0.0016\arcsec$
-and a period of $40.840 \pm 0.022$~yr \citep{2015ApJ...813..106B}. 
+magnitude by approximately 10.5 \citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $4.3082 \pm 0.0013\arcsec$
+and a period of $40.844 \pm 0.021$~yr \citep{Bond_2018}. 
 
 $\mu$~Cassiopeiae is a binary system composed of two main-sequence stars with visual magnitudes of 5.14 and 11.45
 \citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $0.9985 \pm 0.0013\arcsec$ and a period of $21.568 \pm
@@ -264,7 +264,7 @@ motion introduces positional errors comparable to the orbital semimajor axis.
 
 All three systems analyzed in this study were observed with the Hubble Space Telescope (HST), with relative astrometric
 analyses presented in three studies led by Bond. In each case,
-Bond's\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B} analyses relied on measurements of relative
+Bond's\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B,Bond_2018} analyses relied on measurements of relative
 position angles and separations between the binary components rather than absolute right ascension and
 declination. Consequently, his derived quantities are insensitive to telescope pointing errors, provided that both
 components remain well within the detector field of view.   On the other hand, this paper’s data consist of measured
@@ -284,7 +284,7 @@ image was unsaturated, a two-dimensional Gaussian was fit using the Astropy impl
 algorithm with a least-squares statistic. When saturated, two points were selected along each of the four diffraction
 spikes, and their intersections were computed using Cramer's rule \citep{Cramer1750}. This method of determining the
 positions of saturated stars was also done by
-Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. Pixel coordinates were converted to right
+Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B,Bond_2018}. Pixel coordinates were converted to right
 ascension and declination using Astropy WCS routines, taking into account the difference between 1-based WCS indexing
 and the 0-based indexing used in Python.
 
@@ -432,13 +432,13 @@ Procyon & icvd01040 & 2016-10-03 & 114.82249652 & 5.22018271 & 114.82148815 & 5.
 \colhead{$\mu$~Cas} & \colhead{$\sigma$}
 }
 \startdata
-Orbital period, $P$ (yr)                 & 50.1284   & 0.0043  & 40.84    & 0.022   & 21.568    & 0.015  \\
-Semimajor axis, $a$ (arcsec)             & 7.4957    & 0.0025  & 4.3075   & 0.0016  & 0.9985    & 0.0013 \\
-Inclination, $i$ (deg)                   & 136.336   & 0.04    & 31.408   & 0.05    & 110.671   & 0.064 \\
-Position angle of node, $\Omega$ (deg)   & 45.4      & 0.071   & 100.683  & 0.095   & 223.868   & 0.064 \\
-Epoch of periastron, $T_0$ (yr)          & 1994.5715 & 0.0058  & 1968.076 & 0.023   & 1997.2235 & 0.0067 \\
-Eccentricity, $e$                        & 0.59142   & 0.00037 & 0.39785  & 0.00025 & 0.5885    & 0.0011 \\
-Longitude of periastron, $\omega$ (deg)  & 149.161   & 0.075   & 89.23    & 0.11    & 330.37    & 0.18   \\
+Orbital period, $P$ (yr)                 & 50.1284   & 0.0043  & 40.844    & 0.022  & 21.568    & 0.015  \\
+Semimajor axis, $a$ (arcsec)             & 7.4957    & 0.0025  & 4.3082   & 0.0013  & 0.9985    & 0.0013 \\
+Inclination, $i$ (deg)                   & 136.336   & 0.04    & 31.388   & 0.047   & 110.671   & 0.064 \\
+Position angle of node, $\Omega$ (deg)   & 45.4      & 0.071   & 100.785  & 0.088   & 223.868   & 0.064 \\
+Epoch of periastron, $T_0$ (yr)          & 1994.5715 & 0.0058  & 1968.072 & 0.022   & 1997.2235 & 0.0067 \\
+Eccentricity, $e$                        & 0.59142   & 0.00037 & 0.39799  & 0.00025 & 0.5885    & 0.0011 \\
+Longitude of periastron, $\omega$ (deg)  & 149.161   & 0.075   & 89.14    & 0.10    & 330.37    & 0.18   \\
 Primary mass, $M_{\mathrm{A}}$ ($M_\odot$)   & 2.063     & 0.023   & 1.478    & 0.012   & 0.744     & 0.0122 \\
 Secondary mass, $M_{\mathrm{B}}$ ($M_\odot$) & 1.018     & 0.011   & 0.592    & 0.006   & 0.1728    & 0.0035 \\
 Systemic RV (km\,s$^{-1}$)                & -8.47     & \nodata & -4.115   & \nodata & -97       & \nodata \\
