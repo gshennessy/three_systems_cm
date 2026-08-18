@@ -267,9 +267,9 @@ analyses presented in three studies led by Bond. In each case,
 Bond's\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B} analyses relied on measurements of relative
 position angles and separations between the binary components rather than absolute right ascension and
 declination. Consequently, his derived quantities are insensitive to telescope pointing errors, provided that both
-components remain well within the detector field of view.   On the other hand, this paper’s data consist of right
-ascensions and declinations of both components of each system, with the absolute calibration to the ICRS provided by the
-World Coordinate System\citep{2002A&A...395.1061G,2002A&A...395.1077C} headers.  
+components remain well within the detector field of view.   On the other hand, this paper’s data consist of measured
+right ascensions and declinations of both components of each system, with the absolute calibration to the ICRS provided
+by the World Coordinate System\citep{2002A&A...395.1061G,2002A&A...395.1077C} headers.
 
 Archival imaging data were retrieved from the Mikulski Archive for Space Telescopes (MAST), including observations
 beyond those obtained under proposal~12296. Inspection of the data shows that WFC3 observations achieve substantially
@@ -279,37 +279,57 @@ $T^{-3/2}$, where $T$ is the total observational time baseline
 \citep{Wielen1997,vanLeeuwen2007,Lindegren2021}. Accordingly, we restrict our analysis to WFC3 data when deriving
 astrometric parameters. 
 
-We processed each system independently. When the primary was unsaturated, a two-dimensional Gaussian was fit using the
-Astropy implementation of the Levenberg–Marquardt algorithm with a least-squares statistic. When saturated, two points
-were selected along each of the four diffraction spikes, and their intersections were computed using Cramer's rule
-\citep{Cramer1750}. This method of determining the positions of saturated stars was also done by
-Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. 
-Pixel coordinates were converted to right ascension and declination using Astropy WCS routines,
-taking into account the difference between 1-based WCS indexing and the 0-based indexing used in Python. 
+We processed each system independently. Both components were measured from the WFC3 images.  When the primary's
+image was unsaturated, a two-dimensional Gaussian was fit using the Astropy implementation of the Levenberg–Marquardt
+algorithm with a least-squares statistic. When saturated, two points were selected along each of the four diffraction
+spikes, and their intersections were computed using Cramer's rule \citep{Cramer1750}. This method of determining the
+positions of saturated stars was also done by
+Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B}. Pixel coordinates were converted to right
+ascension and declination using Astropy WCS routines, taking into account the difference between 1-based WCS indexing
+and the 0-based indexing used in Python.
 
-The parallax displacement was removed from both components prior to fitting proper motions. The proper motion in right
-ascension was fit using $\mu_{\alpha*} = \dot{\alpha}\cos\delta$, following the standard astrometric convention
-\citep{vanLeeuwen2007,Lindegren2021}. The declination used in the fit corresponds to the CM declination at epoch
-J1991.25. 
+The ICRF positions of the components were corrected for the calculated parallax displacement at the date of each
+observation, i.e., the positions were referred to the solar system barycenter.   These are listed in
+Table~\ref{tab:positions}.    The center of mass (CM) of each of the three systems was then calculated for each
+observation, using the masses of the components (from Bond) listed in Table~\ref{tab:orbits}.  The resulting CM
+positions taken on the same date were averaged so that each observation date had a single CM position associated with
+it.
 
-Once the ICRF positions were calculated as a function of time, the center of mass of the three systems can be
-calculated at each observation date, along with the astrometric parameters for the center of mass of the system. 
-The initial starting point for each calculation was the Hipparcos position of the primary star of each system. 
-The separation and position angle was calculated at the Hipparcos epoch of 1991.25 using the orbital parameters from 
-Table~\ref{tab:orbits}, and the masses of the two stars in order to get the ICRF position of the center of mass of the system. For
-each HST position in Table~\ref{tab:positions}, the effect of the finite parallax was removed from both the primary (observed) and
-secondary's (calculated) position, the center of mass position calculated, and then the proper motions were fit. The proper
-motion in right ascension
-is reported using $RA*\cos(Dec)$ as the current standard in astrometry\citep{1997A&A...323L..49P}. The value of the
-declination in the fit was the Declination of the system CM at epoch 1991.25. The calculated values are listed in
-Table~\ref{tab:cm_astrometry}. For all three systems, the secular acceleration is small in the sense that the maximum
-value after 30 years is less than the errors in our solution.
+The astrometric parameters for the centers of mass of the systems could then be fit. The starting point for each
+calculation was the Hipparcos position of the primary star of each system.  The separation and position angle of the
+secondary were calculated at the Hipparcos epoch of J1991.25 using the orbital parametersand the masses of the two stars
+from Table~\ref{tab:orbits}, in order to get the ICRF position of the CM of the system at that epoch.  Those positions
+were treated as synthetic observations in the analysis, with the same weight as the averaged HST positions at the later
+dates.
+
+Using a standard least-squares fit, the position at epoch J1991.25 and the proper motion of the center of mass of each
+system, in RA and Dec in the ICRF, were then computed.   For each system, the proper motion in right ascension was fit
+using $\mu_{\alpha*} = \dot{\alpha}\cos\delta$, following the standard astrometric convention
+\citep{vanLeeuwen2007,Lindegren2021}, where the $\cos\delta$ factor corresponds to the declination of the center of mass
+of the system at J1991.25.   A linear model was sufficient for the proper motions since, for all three systems, the
+secular acceleration is small in the sense that the maximum value after 30 years is less than the errors in our
+solution.  The calculated astrometric parameters are listed in Table~\ref{tab:cm_astrometry}.  The proper motions are
+given in milliarcseconds per year, with the $\cos\delta$ factor in right ascension computed, as described above, from
+the system's CM declination at J1991.25. 
 
 We plot the residuals from our fits in Figure~\ref{fig:figure1}. The residuals show individual points being up to 400
 mas from the fitted line, which is worse than we had expected when this study was conceived. The residuals for the
-Sirius system are clearly not uniformly distributed. Our data reduction method requires us to accept the astrometry in
-the World Coordinate System as ``truth'', since there are no other objects on the detectors other than the stars of the
-system. 
+Sirius system are clearly not uniformly distributed.  The RMS scatter of the residuals is significantly greater than the
+centroiding uncertainties.  Our data reduction method requires us to accept the astrometry in the World Coordinate
+System as ``truth'', since there are no other objects on the detectors other than the stars of the system.   Evidently,
+the WCS errors at each observation date dominate the scatter in the residuals, which is why the positions of the CMs
+were averaged to form a single position for each date.
+
+% Added paragraph:
+A separate, independent calculation was performed using the raw observations of the components, without any correction
+for parallax.  As in the procedure outlined above, these positions were used to compute the positions of the centers of
+mass, and the resulting CM positions for each unique date were averaged.  (For this scheme, for each system, its
+parallax displacement had to be {\it added} to the CM position at J1991.25 computed from the Hipparcos position of the
+primary.)   This resulted in a set of CM astrometric places based on observations that were compared to CM astrometric
+places computed using the NOVAS astrometry package \citep{2012ascl.soft02003K}.  The resulting observed minus computed
+(O--C) values were used in a least-squares fit to differentially correct the astrometric parameters that NOVAS used in
+its calculation.  The resulting corrected astrometric parameters are essentially the same as those listed in
+Table~\ref{tab:cm_astrometry}. 
 
 We compare our center-of-mass proper motions for Sirius and Procyon with those reported in the FK5 catalog
 \citep{1988VeARI..32....1F}. We corrected the FK5 proper motions to place them in the Hipparcos astrometric reference
