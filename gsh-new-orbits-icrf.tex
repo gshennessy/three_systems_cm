@@ -351,6 +351,48 @@ was designed to resemble Table 12 of \citet{2021AJ....162...14A}. We only tabula
 include the effect of parallax in our ephemeris to save space, which should be a simple exercise if the user needs
 this in the future. 
 
+\section{An Experiment with the Sirius Data}\label{sec:sirius_exp}
+
+Absolute (i.e., ICRS/ICRF) positions of both components of a binary system, such as those represented in
+Table~\ref{tab:positions}, contain information on the system's mass ratio. For the correct mass ratio, the computed
+center-of-mass (CM) position should exhibit linear motion, apart from measurement errors and other unmodeled effects. An
+incorrect mass ratio produces a residual orbital motion in the computed CM, with a quasi-sinusoidal signature having the
+orbital period of the binary. The amplitude of this motion provides a means of estimating the correction to the adopted
+mass ratio. In principle, the mass ratio can therefore be included as an additional fitted parameter in the astrometric
+solution. We have not done so in the analysis described above because the relatively small number of observations covers
+only a fraction of the orbital periods of the three binaries. Under these circumstances, the fitted mass ratio can be
+strongly correlated with the proper motions. 
+
+As a demonstration, we performed such an experiment using the Sirius data, which have both the smallest formal errors in
+the astrometric solution and the least scatter in the post-solution residuals. If the separation of the two components
+in right ascension and declination is measured or computed, separate estimates of the mass ratio can be obtained from
+the primary positions in right ascension, the primary positions in declination, the secondary positions in right
+ascension, or the secondary positions in declination. The estimates obtained from the primary and secondary positions
+are equivalent. A combined solution using both right ascension and declination can also be performed. 
+
+Both the right-ascension and declination solutions indicate that the nominal value,
+\[
+\frac{M_B}{M_A+M_B}=0.3304,
+\]
+is too large. The formal result from the combined solution is
+\[
+\frac{M_B}{M_A+M_B}=0.268\pm0.010.
+\]
+This value is substantially different from the nominal ratio and appears difficult to reconcile with the uncertainties
+in the masses reported by Bond. Nevertheless, to investigate the effect of this result on the astrometric solution, we
+completely recomputed the Sirius data using a mass ratio of 0.268, following the procedure described in the previous
+section. 
+
+The resulting solution for the position and proper motion of the Sirius system CM differs from that given in
+Table~\ref{tab:cm_astrometry}, but has formal uncertainties approximately one-half as large. The scatter of the
+post-solution residuals is also approximately one-half that shown in Figure~\ref{fig:figure1}(a). This reduction is
+substantially larger than would normally be expected from the introduction of a single additional free parameter into
+the solution. The result therefore suggests that the adopted mass ratio has a significant effect on the derived
+astrometric parameters. However, the present data are insufficient to determine whether the value 0.268 is physically
+reliable. Resolving this issue would require additional observations spanning a substantially larger fraction of the
+Sirius system's approximately 50-year orbital period.
+
+
 \begin{deluxetable}{cccrrrrcc}
 \tablehead{\colhead{System Name} & \colhead{Dataset} & \colhead{Time} & \colhead{Pri RA} & \colhead{Pri Dec} &
   \colhead{Sec RA} & \colhead{Sec Dec} & \colhead{$\sigma$ RA} & \colhead{$\sigma$ Dec}} 
@@ -529,7 +571,7 @@ Position angles are measured east of north.}
 \end{deluxetable*}
 
 
-\subsection{Figures}\label{subsec:figures}
+\section{Figures}\label{subsec:figures}
 \begin{figure}[ht]
 \gridline{\fig{sirius-residuals.png}{0.3\textwidth}{(a)}
           \fig{procyon-residuals.png}{0.3\textwidth}{(b)}
