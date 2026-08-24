@@ -1,7 +1,7 @@
 %% Beginning of file 'sample701.tex'
 %%
 %% Version 7.0.1. Created May 2025.
-%% Version 7. Created January 2025.  
+%% Version 7. Created January 2025. 
 %%
 %% AASTeX v7+ calls the following external packages:
 %% times, hyperref, ifthen, hyphens, longtable, xcolor, 
@@ -24,7 +24,7 @@
 %%                derived PDF copy of the accepted manuscript from the publisher
 %%  default     : one text column, 10 point font, single spaced (default).
 %%  manuscript  : one text column, 12 point font, double spaced article.
-%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint    : one text column, 12 point font, single spaced article. 
 %%  preprint2   : two text columns, 12 point font, single spaced article.
 %%  modern      : a stylish, single text column, 12 point font, article with
 %% 		  wider left and right margins. This uses the Daniel
@@ -100,7 +100,7 @@
 %% You can add a light gray and diagonal water-mark to the first page 
 %% with this command:
 \watermark{draft}
-%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% where "text", e.g. DRAFT, is the text to appear. If the text is 
 %% long you can control the water-mark size with:
 %% \setwatermarkfontsize{dimension}
 %% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
@@ -108,7 +108,7 @@
 %%
 %% Use this command to indicate a subdirectory where figures are located.
 %%\graphicspath{{./}{figures/}}
-%% This is the end of the preamble.  Indicate the beginning of the
+%% This is the end of the preamble. Indicate the beginning of the
 %% manuscript itself with \begin{document}.
 
 \begin{document}
@@ -227,7 +227,7 @@ Accurate astrometric positions of bright stars are essential for navigation appl
 space. Although any enumeration of astrometric catalogs is necessarily incomplete, major catalogs produced over recent
 decades include the Fifth Fundamental Catalogue (FK5; \citealt{1988VeARI..32....1F}), Hipparcos
 \citep{1997A&A...323L..49P}, the USNO CCD Astrograph Catalog (UCAC)\citep{2000AJ....120.2131Z,2017AJ....153..166Z}, and
-the three Gaia data releases \citep{2016A&A...595A...2G,2018A&A...616A...1G,2023A&A...674A...1G}.  
+the three Gaia data releases \citep{2016A&A...595A...2G,2018A&A...616A...1G,2023A&A...674A...1G}. 
 
 All astrometric catalogs exhibit both systematic and statistical limitations. In particular, stellar multiplicity has
 long been recognized as a significant source of degraded catalog accuracy
@@ -241,8 +241,9 @@ uneven time coverage complicates the direct combination of Hipparcos and Gaia as
 
 During a routine update of the USNO Guidance and Navigation Catalog (Version~1.2; \citealt{USNOGNC}), it became apparent
 that accurate propagated positions for several nearby bright stars—including Sirius, Procyon, and $\mu$~Cassiopeiae
-could not be obtained using standard five-parameter astrometric solutions alone. In each case, the primary 
-component is sufficiently bright that it is absent from Gaia DR3, and the system is known to be binary or multiple. 
+could not be obtained using standard five-parameter astrometric solutions alone. In each case, the Gaia DR3 data does
+not have both the components, Sirius and Procyon listing only the secondary, and $\mu$~Cassiopeiae listing only the
+primary.
 
 Sirius is among the earliest stellar systems for which an orbital solution was determined
 \citep{10.1093/mnras/49.8.420a}, with a highly precise modern orbit derived from Hubble Space Telescope (HST)
@@ -267,7 +268,7 @@ analyses presented in three studies led by Bond. In each case,
 Bond's\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B,Bond_2018} analyses relied on measurements of relative
 position angles and separations between the binary components rather than absolute right ascension and
 declination. Consequently, his derived quantities are insensitive to telescope pointing errors, provided that both
-components remain well within the detector field of view.   On the other hand, this paper’s data consist of measured
+components remain well within the detector field of view. On the other hand, this paper’s data consist of measured
 right ascensions and declinations of both components of each system, with the absolute calibration to the ICRS provided
 by the World Coordinate System\citep{2002A&A...395.1061G,2002A&A...395.1077C} headers.
 
@@ -279,56 +280,55 @@ $T^{-3/2}$, where $T$ is the total observational time baseline
 \citep{Wielen1997,vanLeeuwen2007,Lindegren2021}. Accordingly, we restrict our analysis to WFC3 data when deriving
 astrometric parameters. 
 
-We processed each system independently. Both components were measured from the WFC3 images.  When the primary's
+We processed each system independently. Both components were measured from the WFC3 images. When the primary's
 image was unsaturated, a two-dimensional Gaussian was fit using the Astropy implementation of the Levenberg–Marquardt
 algorithm with a least-squares statistic. When saturated, two points were selected along each of the four diffraction
 spikes, and their intersections were computed using Cramer's rule \citep{Cramer1750}. This method of determining the
 positions of saturated stars was also done by
 Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B,Bond_2018}. Pixel coordinates were converted to right
 ascension and declination using Astropy WCS routines, taking into account the difference between 1-based WCS indexing
-and the 0-based indexing used in Python.
+and the 0-based indexing used in Python. These ICRF positions are listed in Table~\ref{tab:positions}. 
 
 The ICRF positions of the components were corrected for the calculated parallax displacement at the date of each
-observation, i.e., the positions were referred to the solar system barycenter.   These are listed in
-Table~\ref{tab:positions}.    The center of mass (CM) of each of the three systems was then calculated for each
-observation, using the masses of the components (from Bond) listed in Table~\ref{tab:orbits}.  The resulting CM
-positions taken on the same date were averaged so that each observation date had a single CM position associated with
-it.
+observation, i.e., the positions were referred to the solar system barycenter. The center of mass (CM) of each of the
+three systems was then calculated for each observation, using the masses of the components (from Bond) listed in
+Table~\ref{tab:orbits}. The resulting CM positions taken on the same date were averaged so that each observation date
+had a single CM position associated with it.
 
 The astrometric parameters for the centers of mass of the systems could then be fit. The starting point for each
-calculation was the Hipparcos position of the primary star of each system.  The separation and position angle of the
+calculation was the Hipparcos position of the primary star of each system. The separation and position angle of the
 secondary were calculated at the Hipparcos epoch of J1991.25 using the orbital parametersand the masses of the two stars
-from Table~\ref{tab:orbits}, in order to get the ICRF position of the CM of the system at that epoch.  Those positions
+from Table~\ref{tab:orbits}, in order to get the ICRF position of the CM of the system at that epoch. Those positions
 were treated as synthetic observations in the analysis, with the same weight as the averaged HST positions at the later
 dates.
 
 Using a standard least-squares fit, the position at epoch J1991.25 and the proper motion of the center of mass of each
-system, in RA and Dec in the ICRF, were then computed.   For each system, the proper motion in right ascension was fit
+system, in RA and Dec in the ICRF, were then computed. For each system, the proper motion in right ascension was fit
 using $\mu_{\alpha*} = \dot{\alpha}\cos\delta$, following the standard astrometric convention
 \citep{vanLeeuwen2007,Lindegren2021}, where the $\cos\delta$ factor corresponds to the declination of the center of mass
-of the system at J1991.25.   A linear model was sufficient for the proper motions since, for all three systems, the
+of the system at J1991.25. A linear model was sufficient for the proper motions since, for all three systems, the
 secular acceleration is small in the sense that the maximum value after 30 years is less than the errors in our
-solution.  The calculated astrometric parameters are listed in Table~\ref{tab:cm_astrometry}.  The proper motions are
+solution. The calculated astrometric parameters are listed in Table~\ref{tab:cm_astrometry}. The proper motions are
 given in milliarcseconds per year, with the $\cos\delta$ factor in right ascension computed, as described above, from
 the system's CM declination at J1991.25. 
 
 We plot the residuals from our fits in Figure~\ref{fig:figure1}. The residuals show individual points being up to 400
 mas from the fitted line, which is worse than we had expected when this study was conceived. The residuals for the
-Sirius system are clearly not uniformly distributed.  The RMS scatter of the residuals is significantly greater than the
-centroiding uncertainties.  Our data reduction method requires us to accept the astrometry in the World Coordinate
-System as ``truth'', since there are no other objects on the detectors other than the stars of the system.   Evidently,
+Sirius system are clearly not uniformly distributed. The RMS scatter of the residuals is significantly greater than the
+centroiding uncertainties. Our data reduction method requires us to accept the astrometry in the World Coordinate
+System as ``truth'', since there are no other objects on the detectors other than the stars of the system. Evidently,
 the WCS errors at each observation date dominate the scatter in the residuals, which is why the positions of the CMs
 were averaged to form a single position for each date.
 
 % Added paragraph:
 A separate, independent calculation was performed using the raw observations of the components, without any correction
-for parallax.  As in the procedure outlined above, these positions were used to compute the positions of the centers of
-mass, and the resulting CM positions for each unique date were averaged.  (For this scheme, for each system, its
+for parallax. As in the procedure outlined above, these positions were used to compute the positions of the centers of
+mass, and the resulting CM positions for each unique date were averaged. (For this scheme, for each system, its
 parallax displacement had to be {\it added} to the CM position at J1991.25 computed from the Hipparcos position of the
 primary.)   This resulted in a set of CM astrometric places based on observations that were compared to CM astrometric
-places computed using the NOVAS astrometry package \citep{2012ascl.soft02003K}.  The resulting observed minus computed
+places computed using the NOVAS astrometry package \citep{2012ascl.soft02003K}. The resulting observed minus computed
 (O--C) values were used in a least-squares fit to differentially correct the astrometric parameters that NOVAS used in
-its calculation.  The resulting corrected astrometric parameters are essentially the same as those listed in
+its calculation. The resulting corrected astrometric parameters are essentially the same as those listed in
 Table~\ref{tab:cm_astrometry}. 
 
 We compare our center-of-mass proper motions for Sirius and Procyon with those reported in the FK5 catalog
@@ -340,11 +340,11 @@ with the corrected FK5 values of $(-552.88 \pm 0.3878,-1204.6 \pm 0.45)$ mas yr$
 values are $(-735.269 \pm 14.734,-1064.934 \pm 12.269)$ mas yr$^{-1}$, compared with the corrected FK5 values of
 $(-710.0575 \pm 0.2987,-1022.8 \pm 0.39)$ mas yr$^{-1}$. 
 
-The mass ratios derived for the two systems also differ slightly between the two studies. We obtain mass ratios of 0.324
-for Sirius and 0.286 for Procyon, compared with the FK5 values of 0.282 and 0.268, respectively. The Sirius
-proper-motion components differ from the corrected FK5 values, with neither component agreeing within the
-quoted formal uncertainties. For Procyon, the right-ascension proper motion is consistent with the corrected FK5 value,
-whereas the declination component differs at the approximately $3.5\sigma$ level. 
+The mass ratios derived for the two systems also differ slightly between the two studies. We use the Bond
+mass ratios of 0.324 for Sirius and 0.286 for Procyon, compared with the FK5 values of 0.282 and 0.268,
+respectively. The Sirius proper-motion components differ from the corrected FK5 values, with neither component agreeing
+within the quoted formal uncertainties. For Procyon, the right-ascension proper motion is consistent with the corrected
+FK5 value, whereas the declination component differs at the approximately $3.5\sigma$ level.
 
 We provide tabulated positions, in increments of 5 years, from 2025 to 2050 in Table~\ref{tab:cm_ephemeris}. The table
 was designed to resemble Table 12 of \citet{2021AJ....162...14A}. We only tabulated every fifth year since we did not
@@ -356,7 +356,7 @@ this in the future.
 Absolute (i.e., ICRS/ICRF) positions of both components of a binary system, such as those represented in
 Table~\ref{tab:positions}, contain information on the system's mass ratio. For the correct mass ratio, the computed
 center-of-mass (CM) position should exhibit linear motion, apart from measurement errors and other unmodeled effects. An
-incorrect mass ratio produces a residual orbital motion in the computed CM, with a quasi-sinusoidal signature having the
+incorrect mass ratio produces a residual orbital motion in the computed CM, with signature having the
 orbital period of the binary. The amplitude of this motion provides a means of estimating the correction to the adopted
 mass ratio. In principle, the mass ratio can therefore be included as an additional fitted parameter in the astrometric
 solution. We have not done so in the analysis described above because the relatively small number of observations covers
@@ -380,7 +380,7 @@ is too large. The formal result from the combined solution is
 \]
 This value is substantially different from the nominal ratio and appears difficult to reconcile with the uncertainties
 in the masses reported by Bond. Nevertheless, to investigate the effect of this result on the astrometric solution, we
-completely recomputed the Sirius data using a mass ratio of 0.268, following the procedure described in the previous
+completely recomputed the Sirius data using a ratio of 0.268, following the procedure described in the previous
 section. 
 
 The resulting solution for the position and proper motion of the Sirius system CM differs from that given in
@@ -596,37 +596,14 @@ of mass, primary, and secondary components at five-year intervals from 2025 to 2
 
 This research is based on observations made with the NASA/ESA Hubble Space Telescope obtained from the Space Telescope Science
 Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS
-5–26555. These observations are associated with program 12296.
+5–26555. These observations are associated with program 12296. One of us (GK) was supported by Department of the Navy
+contract \#N0018925P0277. 
 
 The data described here may be obtained from the MAST archive at
 \dataset[doi:10.17909/T9RP4V]{https://dx.doi.org/10.17909/T9RP4V}.
 
 \end{acknowledgments}
 
-\begin{contribution}
-%%This section gives authors the space to recognize author
-%%contributions. The text inside this environment is NOT counted
-%%towards the total word quanta. At a minimum, manuscripts are
-%%expected to include this text: 
-
-  Author Hennessy obtained the data from the archive, processed the data, wrote and edited the manuscript.
-
-  Authors Frouard, Matson, Mason, and Kaplan provided subject matter expertise, code to propagate orbits, and editing of
-  the manuscript.
-
-%% But authors are expected to provide more specific details, e.g. 
-%%
-%%SC was responsible for writing and submitting the manuscript.
-%%WWM came up with the initial research concept and edited the manuscript.
-%%OTS obtained the funding and edited the manuscript.
-%%EBF provided the formal analysis and validation. He also edited the manuscript.
-%%GEH Supervised the undergraduates, wrote the software and administers the project github and Zenodo repositories.
-%%
-%% Authors can use the Contributor Role Taxonomy (CRediT) at
-%% https://credit.niso.org
-%% for ideas on how write a good statement tailored to their needs.
-
-\end{contribution}
 
 %% To help institutions obtain information on the effectiveness of their 
 %% telescopes the AAS Journals has created a group of keywords for telescope 
@@ -634,8 +611,8 @@ The data described here may be obtained from the MAST archive at
 %
 %% Following the acknowledgments section, use the following syntax and the
 %% \facility{} or \facilities{} macros to list the keywords of facilities used 
-%% in the research for the paper.  Each keyword is check against the master 
-%% list during copy editing.  Individual instruments can be provided in 
+%% in the research for the paper. Each keyword is check against the master 
+%% list during copy editing. Individual instruments can be provided in 
 %% parentheses, after the keyword, but they are not verified.
 \facilities{HST(WFC3)}
 
@@ -675,7 +652,7 @@ The data described here may be obtained from the MAST archive at
 \bibliographystyle{aasjournalv7}
 
 %% This command is needed to show the entire author+affiliation list when
-%% the collaboration and author truncation commands are used.  It has to
+%% the collaboration and author truncation commands are used. It has to
 %% go at the end of the manuscript.
 %\allauthors
 
