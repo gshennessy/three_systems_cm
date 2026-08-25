@@ -233,10 +233,12 @@ All astrometric catalogs exhibit both systematic and statistical limitations. In
 long been recognized as a significant source of degraded catalog accuracy
 \citep{1975ARA&A..13..295V,1997A&A...323L..49P,1999A&A...341..121S,2001A&A...372..935P,2017ApJ...840L...1M}. In
 unresolved or partially resolved systems, catalog positions reflect photocenter motion rather than inertial
-center-of-mass motion. An additional complication arises from the markedly different temporal sampling of the two
-principal space-based astrometric missions: Hipparcos obtained observations over approximately three years, while Gaia
-DR3 spans roughly 33 months, with the two missions separated by approximately 24.75~yr (J1991.25 to J2016.0). This
-uneven time coverage complicates the direct combination of Hipparcos and Gaia astrometric data
+center-of-mass motion. In resolved systems where the period is much longer than the time span of observations, proper
+motion and orbital motion may not be properly discriminated; this is especially an issue for astrometry from space
+missions lasting only a few years. An additional complication arises from the markedly different temporal sampling of
+the two principal space-based astrometric missions: Hipparcos obtained observations over approximately three years,
+while Gaia DR3 spans roughly 33 months, with the two missions separated by approximately 24.75~yr (J1991.25 to
+J2016.0). This uneven time coverage complicates the direct combination of Hipparcos and Gaia astrometric data 
 \citep{2019A&A...623A..72K}. 
 
 During a routine update of the USNO Guidance and Navigation Catalog (Version~1.2; \citealt{USNOGNC}), it became apparent
@@ -249,28 +251,28 @@ Sirius is among the earliest stellar systems for which an orbital solution was d
 \citep{10.1093/mnras/49.8.420a}, with a highly precise modern orbit derived from Hubble Space Telescope (HST)
 observations \citep{2017ApJ...840...70B}. Its white dwarf companion, Sirius~B, was discovered by Alvan Clark
 \citep{Clark1862} and is approximately 10 magnitudes fainter than the primary in the visible band. The system has a
-semimajor axis of $7.4957 \pm 0.0025\arcsec$ and an orbital period of $50.1284 \pm 0.0043$~yr
-\citep{2017ApJ...840...70B}. 
+semimajor axis of $7.5\arcsec$ and an orbital period of $50.1$~yr
+\citep{2017ApJ...840...70B}. More exact values can be found in Table~\ref{tab:orbits}.
 
 The Procyon system \citep{Auwers1862} consists of a subgiant primary and a white dwarf companion differing in visual
-magnitude by approximately 10.5 \citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $4.3082 \pm 0.0013\arcsec$
-and a period of $40.844 \pm 0.021$~yr \citep{Bond_2018}. 
+magnitude by approximately 10.5 \citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $4.3\arcsec$
+and a period of $40.8$~yr \citep{Bond_2018}. 
 
 $\mu$~Cassiopeiae is a binary system composed of two main-sequence stars with visual magnitudes of 5.14 and 11.45
-\citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $0.9985 \pm 0.0013\arcsec$ and a period of $21.568 \pm
-0.015$~yr \citep{2020ApJ...904..112B}. For all three systems, propagating positions without accounting for orbital
+\citep{Wenger2000SIMBAD}. The orbit has a semimajor axis of $0.99 arcsec$ and a period of $21.5$~yr
+\citep{2020ApJ...904..112B}. For all three systems, propagating positions without accounting for orbital 
 motion introduces positional errors comparable to the orbital semimajor axis. 
 
 \section{Data and Data Reduction}\label{sec:data_dr}
 
 All three systems analyzed in this study were observed with the Hubble Space Telescope (HST), with relative astrometric
 analyses presented in three studies led by Bond. In each case,
-Bond's\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B,Bond_2018} analyses relied on measurements of relative
+Bond's\citep{2015ApJ...813..106B,2017ApJ...840...70B,Bond_2018,2020ApJ...904..112B} analyses relied on measurements of relative
 position angles and separations between the binary components rather than absolute right ascension and
 declination. Consequently, his derived quantities are insensitive to telescope pointing errors, provided that both
 components remain well within the detector field of view. On the other hand, this paper’s data consist of measured
 right ascensions and declinations of both components of each system, with the absolute calibration to the ICRS provided
-by the World Coordinate System\citep{2002A&A...395.1061G,2002A&A...395.1077C} headers.
+by the World Coordinate System (WCS)\citep{2002A&A...395.1061G,2002A&A...395.1077C} headers.
 
 Archival imaging data were retrieved from the Mikulski Archive for Space Telescopes (MAST), including observations
 beyond those obtained under proposal~12296. Inspection of the data shows that WFC3 observations achieve substantially
@@ -284,7 +286,7 @@ We processed each system independently. Both components were measured from the W
 image was unsaturated, a two-dimensional Gaussian was fit using the Astropy implementation of the Levenberg–Marquardt
 algorithm with a least-squares statistic. When saturated, two points were selected along each of the four diffraction
 spikes, and their intersections were computed using Cramer's rule \citep{Cramer1750}. This method of determining the
-positions of saturated stars was also done by
+positions of saturated stars was also used by
 Bond\citep{2017ApJ...840...70B,2015ApJ...813..106B,2020ApJ...904..112B,Bond_2018}. Pixel coordinates were converted to right
 ascension and declination using Astropy WCS routines, taking into account the difference between 1-based WCS indexing
 and the 0-based indexing used in Python. These ICRF positions are listed in Table~\ref{tab:positions}. 
@@ -297,7 +299,7 @@ had a single CM position associated with it.
 
 The astrometric parameters for the centers of mass of the systems could then be fit. The starting point for each
 calculation was the Hipparcos position of the primary star of each system. The separation and position angle of the
-secondary were calculated at the Hipparcos epoch of J1991.25 using the orbital parametersand the masses of the two stars
+secondary were calculated at the Hipparcos epoch of J1991.25 using the orbital parameters and the masses of the two stars
 from Table~\ref{tab:orbits}, in order to get the ICRF position of the CM of the system at that epoch. Those positions
 were treated as synthetic observations in the analysis, with the same weight as the averaged HST positions at the later
 dates.
@@ -312,7 +314,7 @@ solution. The calculated astrometric parameters are listed in Table~\ref{tab:cm_
 given in milliarcseconds per year, with the $\cos\delta$ factor in right ascension computed, as described above, from
 the system's CM declination at J1991.25. 
 
-We plot the residuals from our fits in Figure~\ref{fig:figure1}. The residuals show individual points being up to 400
+We plot the residuals from our fits in Figure~\ref{fig:figure1}. The residuals show individual points lying up to 400
 mas from the fitted line, which is worse than we had expected when this study was conceived. The residuals for the
 Sirius system are clearly not uniformly distributed. The RMS scatter of the residuals is significantly greater than the
 centroiding uncertainties. Our data reduction method requires us to accept the astrometry in the World Coordinate
@@ -621,7 +623,7 @@ The data described here may be obtained from the MAST archive at
 %% the manuscript. Authors should list each code and include either a
 %% citation or url to the code inside ()s when available.
 \software{astropy\citep{2013A&A...558A..33A,2018AJ....156..123A,2022ApJ...935..167A},
-  novas\citep{2012ascl.soft02003K},
+  NOVAS\citep{2012ascl.soft02003K},
   scipy\citep{Virtanen2020SciPy}}
 
 %% Appendix material should be preceded with a single \appendix command.
@@ -648,6 +650,7 @@ The data described here may be obtained from the MAST archive at
 %% pdflatex sample7.tex
 %% pdflatex sample7.tex
 
+\clearpage
 \bibliography{sample701}{}
 \bibliographystyle{aasjournalv7}
 
