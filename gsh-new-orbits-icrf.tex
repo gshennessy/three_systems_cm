@@ -99,7 +99,7 @@
 %%
 %% You can add a light gray and diagonal water-mark to the first page 
 %% with this command:
-\watermark{draft}
+\watermark{Ed Board}
 %% where "text", e.g. DRAFT, is the text to appear. If the text is 
 %% long you can control the water-mark size with:
 %% \setwatermarkfontsize{dimension}
@@ -270,7 +270,7 @@ analyses presented in three studies led by Bond. In each case,
 Bond's\citep{2015ApJ...813..106B,2017ApJ...840...70B,Bond_2018,2020ApJ...904..112B} analyses relied on measurements of relative
 position angles and separations between the binary components rather than absolute right ascension and
 declination. Consequently, his derived quantities are insensitive to telescope pointing errors, provided that both
-components remain well within the detector field of view. On the other hand, this paper’s data consist of measured
+components remain well within the detector field of view. We use a different approach, this paper’s data consist of measured
 right ascensions and declinations of both components of each system, with the absolute calibration to the ICRS provided
 by the World Coordinate System (WCS)\citep{2002A&A...395.1061G,2002A&A...395.1077C} headers.
 
@@ -343,7 +343,7 @@ values are $(-735.269 \pm 14.734,-1064.934 \pm 12.269)$ mas yr$^{-1}$, compared 
 $(-710.0575 \pm 0.2987,-1022.8 \pm 0.39)$ mas yr$^{-1}$. 
 
 The mass ratios derived for the two systems also differ slightly between the two studies. We use the Bond
-mass ratios of 0.324 for Sirius and 0.286 for Procyon, compared with the FK5 values of 0.282 and 0.268,
+mass ratios ($f=M_B/(M_A+M_B)$ of 0.330 for Sirius and 0.286 for Procyon, compared with the FK5 values of 0.282 and 0.268,
 respectively. The Sirius proper-motion components differ from the corrected FK5 values, with neither component agreeing
 within the quoted formal uncertainties. For Procyon, the right-ascension proper motion is consistent with the corrected
 FK5 value, whereas the declination component differs at the approximately $3.5\sigma$ level.
@@ -374,16 +374,17 @@ are equivalent. A combined solution using both right ascension and declination c
 
 Both the right-ascension and declination solutions indicate that the nominal value,
 \[
-\frac{M_B}{M_A+M_B}=0.3304,
+\frac{M_B}{M_A+M_B}=0.330,
 \]
 is too large. The formal result from the combined solution is
 \[
 \frac{M_B}{M_A+M_B}=0.268\pm0.010.
 \]
-This value is substantially different from the nominal ratio and appears difficult to reconcile with the uncertainties
-in the masses reported by Bond. Nevertheless, to investigate the effect of this result on the astrometric solution, we
-completely recomputed the Sirius data using a ratio of 0.268, following the procedure described in the previous
-section. 
+
+Both the right-ascension and declination solutions indicate that the nominal value of the mass ratio f, 0.330, is too
+large. The formal result from the combined solution is f = 0.268 ± 0.010.  This value is substantially different from
+the nominal ratio, and appears difficult to reconcile with the mass uncertainties quoted by Bond (although not much
+different from the FK5 value). 
 
 The resulting solution for the position and proper motion of the Sirius system CM differs from that given in
 Table~\ref{tab:cm_astrometry}, but has formal uncertainties approximately one-half as large. The scatter of the
@@ -394,6 +395,32 @@ astrometric parameters. However, the present data are insufficient to determine 
 reliable. Resolving this issue would require additional observations spanning a substantially larger fraction of the
 Sirius system's approximately 50-year orbital period.
 
+
+\begin{deluxetable}{lcccccc}
+\tablecaption{Orbital Elements for Sirius, Procyon, and $\mu$~Cassiopeiae\label{tab:orbits}}
+\tablehead{
+\colhead{Parameter} &
+\colhead{Sirius} & \colhead{$\sigma$} &
+\colhead{Procyon} & \colhead{$\sigma$} &
+\colhead{$\mu$~Cas} & \colhead{$\sigma$}
+}
+\startdata
+Orbital period, $P$ (yr)                 & 50.1284   & 0.0043  & 40.844    & 0.022  & 21.568    & 0.015  \\
+Semimajor axis, $a$ (arcsec)             & 7.4957    & 0.0025  & 4.3082   & 0.0013  & 0.9985    & 0.0013 \\
+Inclination, $i$ (deg)                   & 136.336   & 0.04    & 31.388   & 0.047   & 110.671   & 0.064 \\
+Position angle of node, $\Omega$ (deg)   & 45.4      & 0.071   & 100.785  & 0.088   & 223.868   & 0.064 \\
+Epoch of periastron, $T_0$ (yr)          & 1994.5715 & 0.0058  & 1968.072 & 0.022   & 1997.2235 & 0.0067 \\
+Eccentricity, $e$                        & 0.59142   & 0.00037 & 0.39799  & 0.00025 & 0.5885    & 0.0011 \\
+Longitude of periastron, $\omega$ (deg)  & 149.161   & 0.075   & 89.14    & 0.10    & 330.37    & 0.18   \\
+Primary mass, $M_{\mathrm{A}}$ ($M_\odot$)   & 2.063     & 0.023   & 1.478    & 0.012   & 0.744     & 0.0122 \\
+Secondary mass, $M_{\mathrm{B}}$ ($M_\odot$) & 1.018     & 0.011   & 0.592    & 0.006   & 0.1728    & 0.0035 \\
+Systemic RV (km\,s$^{-1}$)                & -8.47     & \nodata & -4.115   & \nodata & -97       & \nodata \\
+Parallax (milliarcsec)                   & 379.21    & 1.58    & 285.93   & 1.26    & 132.4     & 0.43 \\ 
+Secular Acceleration RA (mas/yr${}^{-2}$) & 3.47E-6   & \nodata & 1.76E-6 & \nodata  & -8.97E-5 & \nodata \\
+Secular Acceleration DEC (mas/yr${}^{-2}$)& 8.25E-6   & \nodata & 2.56E-6 & \nodata & 4.22E-5 & \nodata\\
+\enddata
+\tablecomments{Quoted uncertainties are $1\sigma$. The data are from the papers by Bond.}
+\end{deluxetable}
 
 \begin{deluxetable}{cccrrrrcc}
 \tablehead{\colhead{System Name} & \colhead{Dataset} & \colhead{Time} & \colhead{Pri RA} & \colhead{Pri Dec} &
@@ -466,32 +493,6 @@ Procyon & icvd01040 & 2016-10-03 & 114.82249652 & 5.22018271 & 114.82148815 & 5.
 \tablecomments{The RA and Dec positions are in decimal degrees, the errors in the RA and Dec are in arcseconds.}
 \end{deluxetable}
 
-
-\begin{deluxetable}{lcccccc}
-\tablecaption{Orbital Elements for Sirius, Procyon, and $\mu$~Cassiopeiae\label{tab:orbits}}
-\tablehead{
-\colhead{Parameter} &
-\colhead{Sirius} & \colhead{$\sigma$} &
-\colhead{Procyon} & \colhead{$\sigma$} &
-\colhead{$\mu$~Cas} & \colhead{$\sigma$}
-}
-\startdata
-Orbital period, $P$ (yr)                 & 50.1284   & 0.0043  & 40.844    & 0.022  & 21.568    & 0.015  \\
-Semimajor axis, $a$ (arcsec)             & 7.4957    & 0.0025  & 4.3082   & 0.0013  & 0.9985    & 0.0013 \\
-Inclination, $i$ (deg)                   & 136.336   & 0.04    & 31.388   & 0.047   & 110.671   & 0.064 \\
-Position angle of node, $\Omega$ (deg)   & 45.4      & 0.071   & 100.785  & 0.088   & 223.868   & 0.064 \\
-Epoch of periastron, $T_0$ (yr)          & 1994.5715 & 0.0058  & 1968.072 & 0.022   & 1997.2235 & 0.0067 \\
-Eccentricity, $e$                        & 0.59142   & 0.00037 & 0.39799  & 0.00025 & 0.5885    & 0.0011 \\
-Longitude of periastron, $\omega$ (deg)  & 149.161   & 0.075   & 89.14    & 0.10    & 330.37    & 0.18   \\
-Primary mass, $M_{\mathrm{A}}$ ($M_\odot$)   & 2.063     & 0.023   & 1.478    & 0.012   & 0.744     & 0.0122 \\
-Secondary mass, $M_{\mathrm{B}}$ ($M_\odot$) & 1.018     & 0.011   & 0.592    & 0.006   & 0.1728    & 0.0035 \\
-Systemic RV (km\,s$^{-1}$)                & -8.47     & \nodata & -4.115   & \nodata & -97       & \nodata \\
-Parallax (milliarcsec)                   & 379.21    & 1.58    & 285.93   & 1.26    & 132.4     & 0.43 \\ 
-Secular Acceleration RA (mas/yr${}^{-2}$) & 3.47E-6   & \nodata & 1.76E-6 & \nodata  & -8.97E-5 & \nodata \\
-Secular Acceleration DEC (mas/yr${}^{-2}$)& 8.25E-6   & \nodata & 2.56E-6 & \nodata & 4.22E-5 & \nodata\\
-\enddata
-\tablecomments{Quoted uncertainties are $1\sigma$. The data are from the papers by Bond.}
-\end{deluxetable}
 
 \begin{deluxetable}{lcccccc}
 \tablecaption{Center-of-Mass Astrometric Parameters at Epoch J1991.25\label{tab:cm_astrometry}}
